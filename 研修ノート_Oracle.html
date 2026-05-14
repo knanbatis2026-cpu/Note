@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x7814;&#x4fee;&#x30ce;&#x30fc;&#x30c8;&#x3000;Oracle</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        <style>
+:root {
+    --bg-color: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --accent-color: #3b82f6;
+    --accent-soft: #eff6ff;
+    --border-color: #e2e8f0;
+    --code-bg: #1e1e1e;
+    --header-height: 60px;
+}
+
+/* 手書きノート風スタイル */
+body {
+    font-family: 'MeiryoUI' !important;
+    background-color: #fffaf0 !important;
+    /* ノート用紙の背景色 */
+    background-image:
+        linear-gradient(#f1e1d1 1px, transparent 1px),
+        linear-gradient(90deg, #f1e1d1 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* 方眼紙風 */
+    color: #4a4a4a !important;
+    line-height: 1.8 !important;
+}
+
+/* 基本設定：小さいウィンドウ（フルスクリーン以外） */
+body {
+    padding: 50px 40px !important;
+}
+.content-card {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* 画面幅が広い場合（例：1024px以上をフルスクリーンとみなす場合） */
+@media screen and (min-width: 1024px) {
+    body {
+        padding: 50px 200px !important;
+    }
+}
+
+p strong {
+    color: var(--accent-color);
+    background: var(--accent-soft);
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #2d5a88 !important;
+    border-bottom: 2px dashed #d1b8a1 !important;
+    padding-bottom: 5px !important;
+    font-weight: bold !important;
+}
+
+ul {
+    list-style-type: square !important;
+}
+
+code {
+    background-color: #fcebeb !important;
+    color: #d1242f !important;
+    padding: 2px 4px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', Courier, 'Firple', monospace !important;
+    width: calc(100% - 8px) !important;
+}
+
+pre {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hljs-title.function_ {
+    color: orange !important;
+}
+
+.hljs-title {
+    color: #000000 !important;
+}
+
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+}
+
+th,
+td {
+    border: 1px solid #d1b8a1 !important;
+    padding: 8px !important;
+}
+
+th {
+    background-color: #fdf5e6 !important;
+}
+
+hr {
+    border: 0 !important;
+    border-top: 2px solid #d1b8a1 !important;
+    margin: 30px 0 !important;
+}
+
+.box {
+    border: 3px solid #03c500cc;
+    padding: 5px;
+    background-color: #fff5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex * {
+    padding: 0vh 1vw;
+    flex: 1;
+}
+
+
+
+
+
+/* 研修ノート_Oracle */
+/* ##### 内部結合の出力 の変更 */
+/* 結合キーの列の色を変える */
+.custom-table td:nth-child(3),
+.custom-table td:nth-child(4),
+.custom-table th:nth-child(3),
+.custom-table th:nth-child(4) {
+    background-color: #e2efda;
+    /* 薄い緑色 */
+}
+
+/* ##### 左外部結合の出力 の変更 */
+.custom-table-v2 td:nth-child(3),
+.custom-table-v2 td:nth-child(4),
+.custom-table-v2 th:nth-child(3),
+.custom-table-v2 th:nth-child(4) {
+    background-color: #e2efda;
+}
+
+/* 8行目のテキスト色を赤に変更 */
+.custom-table-v2 tr:nth-child(8) td:nth-child(4),
+.custom-table-v2 tr:nth-child(8) td:nth-child(5) {
+    color: #ff0000;
+}
+
+/* ##### 右外部結合の出力の変更 */
+.custom-table-v3 td:nth-child(3),
+.custom-table-v3 td:nth-child(4),
+.custom-table-v3 th:nth-child(3),
+.custom-table-v3 th:nth-child(4) {
+    background-color: #e2efda;
+}
+
+/* 最終行(8行目)のテキスト色を赤に変更 */
+.custom-table-v3 tr:nth-child(8) td:nth-child(1),
+.custom-table-v3 tr:nth-child(8) td:nth-child(2),
+.custom-table-v3 tr:nth-child(8) td:nth-child(3) {
+    color: #ff0000;
+}
+</style>
+        </head>
+        <body class="vscode-body vscode-light">
+            <style>
+  :root {
+    --sidebar-width: 280px;
+    --accent-color: #3b82f6;
+  }
+
+  /* 1. 目次全体を囲むコンテナの配置（画面に対する絶対座標） */
+  #sidebar-container {
+    position: fixed !important; /* 画面に固定 */
+    top: 0 !important;
+    left: 0 !important;
+    width: var(--sidebar-width) !important;
+    height: 100vh !important;
+    z-index: 99999 !important; /* 最前面に配置 */
+    
+    /* 初期状態は画面の左外側に隠す */
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    background: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important; /* はみ出し防止 */
+  }
+
+  /* 表示フラグ（JSで切り替え） */
+  #sidebar-container.active {
+    transform: translateX(0) !important;
+  }
+
+  /* 2. コンテナ内部のスクロールエリア */
+  nav#sidebar-content {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 2rem 1.5rem !important;
+    overflow-y: auto !important; /* 目次が長い場合にスクロール */
+    box-sizing: border-box !important;
+  }
+
+  /* 3. 開閉ボタン（絶対配置） */
+  #toggle-btn {
+    position: fixed !important;
+    left: 20px !important;
+    bottom: 20px !important;
+    width: 56px !important;
+    height: 56px !important;
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    z-index: 100000 !important; /* サイドバーよりさらに前面 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  }
+
+  /* 目次内のデザイン */
+  nav h2 { font-size: 0.8rem !important; color: #64748b !important; margin-bottom: 1.5rem !important; border: none !important; }
+  nav ul { list-style: none !important; padding: 0 !important; margin: 0 !important; }
+  nav li a { display: block; padding: 10px; text-decoration: none; color: #333; font-size: 14px; border-radius: 6px; transition: 0.2s; }
+  nav li a:hover { background-color: #f0f7ff; color: var(--accent-color); }
+</style>
+<head>
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', () => {
+      // 既存の要素があれば削除
+      const ids = ['sidebar-container', 'toggle-btn'];
+      ids.forEach(id => { const el = document.getElementById(id); if (el) el.remove(); });
+
+      // 1. コンテナとナビゲーションの作成
+      const container = document.createElement('div');
+      container.id = 'sidebar-container';
+      
+      const nav = document.createElement('nav');
+      nav.id = 'sidebar-content';
+      nav.innerHTML = '<h2>目次</h2><ul id="toc-list"></ul>';
+      
+      container.appendChild(nav);
+      document.body.appendChild(container);
+
+      // 2. ボタンの作成
+      const btn = document.createElement('button');
+      btn.id = 'toggle-btn';
+      btn.innerHTML = '☰';
+      document.body.appendChild(btn);
+
+      // 3. 目次の生成（本文の見出しをスキャン）
+      const tocList = document.getElementById('toc-list');
+      const headings = document.querySelectorAll('h1, h2, h3');
+      headings.forEach((h, i) => {
+        if (!h.id) h.id = 'idx-' + i;
+        const li = document.createElement('li');
+        if (h.tagName === 'H2') li.style.paddingLeft = '15px';
+        if (h.tagName === 'H3') li.style.paddingLeft = '30px';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        li.appendChild(a);
+        tocList.appendChild(li);
+        
+        // リンククリックで閉じる処理
+        a.addEventListener('click', () => {
+            container.classList.remove('active');
+            btn.innerHTML = '☰';
+        });
+      });
+
+      // 4. ボタンクリックでの表示切り替え
+      btn.addEventListener('click', (e) => {
+        const isOpen = container.classList.toggle('active');
+        btn.innerHTML = isOpen ? '✕' : '☰';
+      });
+    });
+  })();
+</script>
+</head>
+<div class="content-card">
+<h1 id="研修ノートoracle">研修ノート　Oracle</h1>
+<h1 id="5月8日">5月8日</h1>
+<h2 id="やったこと">やったこと</h2>
+<ul>
+<li>Oracle</li>
+<li>データベース</li>
+</ul>
+<h2 id="学んだこと">学んだこと</h2>
+<h3 id="データ">データ</h3>
+<p>名前や住所などの一度決まったらおおよそ変わらないデータを、<strong>マスタ</strong>という。</p>
+<p>貸出情報など、溜まっていくデータを<strong>トランザクションデータ</strong>という。</p>
+<p>データを管理するシステムを<strong>DBMS</strong>（データベースマネジメントシステム）という。</p>
+<h3 id="データベース">データベース</h3>
+<div class="box">
+<p>• 問い<br>
+Oracleは有名な商用「RDB」です。</p>
+<ol>
+<li>RDBとはどんなデータベースでしょうか？</li>
+<li>RDBのメリット・デメリットは？</li>
+<li>RDBを操作するために必要な言語は何ですか？</li>
+</ol>
+<hr>
+<ol>
+<li>
+<p>どんなデータベースか</p>
+<ul>
+<li>Relational Database：リレーショナルデータベース
+表形式の複数のデータを関連付けて使えるように管理されたデータベース</li>
+</ul>
+</li>
+<li>
+<p>メリット・デメリット</p>
+<ul>
+<li>メリット
+<ul>
+<li>データの整合性、一貫性を保ちやすい</li>
+<li>データの扱いが柔軟になる</li>
+</ul>
+</li>
+<li>デメリット
+<ul>
+<li>画像や音声のデータが扱いにくい</li>
+<li>拡張性が制限される</li>
+<li>あらかじめ表の形を決める必要がある<br>
+→ 途中で項目の追加や変更をしにくい</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>必要な言語</p>
+<ul>
+<li>SQL（Structured Query Language）</li>
+</ul>
+</li>
+</ol>
+</div>
+<h3 id="rdb">RDB</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表</td>
+<td><strong>テーブル</strong></td>
+</tr>
+<tr>
+<td>列</td>
+<td><strong>カラム</strong></td>
+</tr>
+<tr>
+<td>行</td>
+<td><strong>レコード</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="oracle">Oracle</h3>
+<p>OracleやMicrosoft SQL Serverは商用RDBMS。データベースの使用は有償であり、ライセンス契約を結ぶ必要がある。これに対して、MySQLやPostgreSQLは無償で利用できる。</p>
+<h5 id="rdbmsの例">RDBMSの例</h5>
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Oracle</strong></td>
+<td>商用RDBMSとして、世界で最も多く使われている</td>
+</tr>
+<tr>
+<td>Microsoft SQL Server</td>
+<td>Microsoft社の商用RDBMS</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>オープンソースRDBMS。日本では特に人気がある</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>世界で最も有名なオープンソースRDBMS</td>
+</tr>
+<tr>
+<td>Microsoft Access</td>
+<td>Microsoft社のOfficeファミリーRDBMS</td>
+</tr>
+<tr>
+<td><strong>SQLite</strong></td>
+<td>サーバー不要の組み込みのRDBMS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="oracleのデータ管理構造">Oracleのデータ管理構造</h3>
+<h4 id="データベースオブジェクト">データベースオブジェクト</h4>
+<p>Oracleではテーブル、インデックス、ビュー、シーケンスなど、何らかの機能を持った情報の集まりで構成されている。これらの情報のことを「<strong>データベースオブジェクト</strong>（以下、オブジェクト）」という。</p>
+<h4 id="ユーザ">ユーザ</h4>
+<p>Oracleを利用する際には「<strong>ユーザ</strong>」と呼ばれるアカウント情報が必要。<br>
+あらかじめ作成したユーザにログインすることでテーブルの操作を行える。</p>
+<h5 id=""></h5>
+<table>
+<thead>
+<tr>
+<th>ユーザ名</th>
+<th>概要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SYS</strong></td>
+<td>データベースの管理上、最も強力な権限を持ち、すべての管理機能を実行できる</td>
+</tr>
+<tr>
+<td><strong>SYSTEM</strong></td>
+<td>通常の管理業務で使うユーザで、データベースのアップグレードやバックアップ・リカバリなどの一部の機能を除く全ての管理機能が実行できる</td>
+</tr>
+</tbody>
+</table>
+<h4 id="スキーマ">スキーマ</h4>
+<p>各ユーザが管理しているオブジェクトを集めた場所を<strong>スキーマ</strong>（schema）という。全てのオブジェクトは、データベース中に登録された、いずれかのユーザのスキーマに属している。</p>
+<h3 id="oracleの操作">Oracleの操作</h3>
+<h4 id="接続の流れ">接続の流れ</h4>
+<ol>
+<li>systemユーザに接続（ログイン）</li>
+<li>systemユーザのワークスペースでユーザを作成</li>
+<li>作成したユーザに表領域、権限を付与</li>
+<li>作成したユーザに接続</li>
+</ol>
+<h5 id="接続">接続</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> ユーザ名 IDENTIFIED <span class="hljs-keyword">BY</span> パスワード; <span class="hljs-comment">-- ユーザの作成</span>
+<span class="hljs-keyword">SELECT</span> username, password <span class="hljs-keyword">FROM</span> DBA_USERS <span class="hljs-keyword">WHERE</span> username <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;ユーザ名(大文字)&#x27;</span>; <span class="hljs-comment">-- ユーザネームとパスワードを表示</span>
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">TO</span> ユーザ名; <span class="hljs-comment">-- 作ったユーザに対して権限を付与</span>
+</code></pre>
+<h5 id="削除">削除</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">USER</span> sssuser CASCADE; <span class="hljs-comment">-- ユーザの削除</span>
+</code></pre>
+<h4 id="テーブルの作成">テーブルの作成</h4>
+<p>CREATE TABLE 文を使用してテーブルを作成する。</p>
+<h5 id="create-table文">CREATE TABLE文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-operator">&lt;</span>テーブル名<span class="hljs-operator">&gt;</span> 
+(<span class="hljs-operator">&lt;</span>列名 <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>データ型<span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>この列の制約<span class="hljs-operator">&gt;</span>, <span class="hljs-comment">-- カンマを付ける</span>
+<span class="hljs-operator">&lt;</span>列名 <span class="hljs-number">2</span><span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>データ型<span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>この列の制約<span class="hljs-operator">&gt;</span>, 
+<span class="hljs-operator">&lt;</span>列名 <span class="hljs-number">3</span><span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>データ型<span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>この列の制約<span class="hljs-operator">&gt;</span>, 
+<span class="hljs-operator">&lt;</span>列名 <span class="hljs-number">4</span><span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>データ型<span class="hljs-operator">&gt;</span><span class="hljs-operator">&lt;</span>この列の制約<span class="hljs-operator">&gt;</span>, 
+･ 
+･ 
+･ 
+<span class="hljs-operator">&lt;</span>このテーブルの制約 <span class="hljs-number">1</span><span class="hljs-operator">&gt;</span>,<span class="hljs-operator">&lt;</span>このテーブルの制約 <span class="hljs-number">2</span><span class="hljs-operator">&gt;</span>,……); <span class="hljs-comment">-- ここにはカンマはつけない</span>
+</code></pre>
+<p>「列名」とは、表（テーブル）の項目名（見出し）<br>
+「データ型」とは項目に入る情報の形式、「制約」とはルールのようなもの</p>
+<div class="box">
+<p>・エクセルとの違い<br>
+列ごとにデータ型を設定する必要がある</p>
+</div>
+</br>
+<div class="box">
+<p>・命名ルール</p>
+<ul>
+<li>
+<p>半角文字のアルファベット、数字、アンダーバー（_）のみ使用する</p>
+<ul>
+<li>例えば、「emp_id」を「emp-id」と書いてはいけません。また、「$」、「#」、「?」のような記号も名前に使ってはいけません。</li>
+</ul>
+</li>
+<li>
+<p>日本語は原則使用しない</p>
+<ul>
+<li>Oracle を含め、一部の RDBMS では日本語（全角文字）でテーブルや列を命名できます。しかし、一般的には使わないため、使用は避けましょう。</li>
+</ul>
+</li>
+<li>
+<p>名前の先頭は必ず半角のアルファベットを使用する</p>
+<ul>
+<li>「1_mail」のような命名は、標準 SQL では禁止されています。やむを得ず数字を付けたい場合は、「mail_1」のように表記しましょう。</li>
+</ul>
+</li>
+<li>
+<p>1 つのスキーマ中に同じ名前のテーブルを 2 つ以上作らない仕様上禁止されています。</p>
+</li>
+<li>
+<p>1 つのテーブル内に同じ名前の列を 2 つ以上作らない仕様上禁止されています。</p>
+</li>
+</ul>
+</div>
+<h5 id="代表的なデータ型">代表的なデータ型</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">データ型</th>
+<th style="text-align:left">制限</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong><code>VARCHAR2 (n)</code></strong></td>
+<td style="text-align:left">最大 4000 バイト</td>
+<td style="text-align:left"><strong>可変長文字列型</strong>（n に上限サイズを指定）<br>※1 括弧内に「n BYTE」と記述した場合、最大バイト数を指定（省略した場合も同様）<br>※2 括弧内に「n CHAR」と記述した場合、最大文字数を指定（2バイト文字も1文字として換算）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>NVARCHAR2 (n)</code></td>
+<td style="text-align:left">最大 4000 バイト</td>
+<td style="text-align:left">各国語キャラクタセットを使用する UNICODE データ型の可変長文字列型（n に最大サイズを指定）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CHAR (n)</code></td>
+<td style="text-align:left">最大 2000 バイト</td>
+<td style="text-align:left">固定長文字列型（n に格納サイズを指定）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>NCHAR (n)</code></td>
+<td style="text-align:left">最大 2000 バイト</td>
+<td style="text-align:left">各国語キャラクタセットを使用する UNICODE データ型の固定長文字列型（n に格納サイズを指定）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>NUMBER (n, m)</code></strong></td>
+<td style="text-align:left">最大 38 桁</td>
+<td style="text-align:left">数値型（n に最大桁数、m に小数部の桁数を指定）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>DATE</code></td>
+<td style="text-align:left">紀元前 4712年1月1日～</br>紀元 9999年12月31日</td>
+<td style="text-align:left">日付型（年/月/日/<strong>時/分/秒</strong>を格納し、7 バイトの領域を使用）</td>
+</tr>
+<tr>
+<td style="text-align:left"><nobr><code>TIMESTAMP (n)</code></nobr></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">日付型（年/月/日/<strong>時/分/秒</strong>/ミリ秒を格納し、n には小数部の桁数を指定）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="制約">制約</h4>
+<h5 id="oracleの主な制約一覧">Oracleの主な制約一覧</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">制約名</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>一意制約 (UNIQUE)</strong></td>
+<td style="text-align:left"><strong>重複するフィールドを禁止する</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>NOT NULL 制約 (NOT NULL)</strong></td>
+<td style="text-align:left">NULL 値を禁止する。<br>※NULL とは、「何も値が入っていない状態」を表す特殊なデータ</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>主キー制約 (PRIMARY KEY)</strong></td>
+<td style="text-align:left">テーブルに格納されているレコードを識別するための列。<br><strong>一意制約と NOT NULL 制約の両機能を与える</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>外部参照制約 (REFERENCES)</strong></td>
+<td style="text-align:left"><strong>他のテーブルの一意キーを参照する</strong>。参照先に存在しないデータを入れることができなくなる。「一意キー」とは、一意制約、もしくは<strong>主キー制約</strong>が付いた列のことを指す。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="列制約の記述方法">列制約の記述方法</h5>
+<p>列の定義と同時に、その列に対して制約を設定する方法。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">制約名</th>
+<th style="text-align:left">構文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">一意制約</td>
+<td style="text-align:left"><code>列名 データ型 UNIQUE</code></td>
+</tr>
+<tr>
+<td style="text-align:left">NOT NULL 制約</td>
+<td style="text-align:left"><code>列名 データ型 NOT NULL</code></td>
+</tr>
+<tr>
+<td style="text-align:left">主キー制約</td>
+<td style="text-align:left"><code>列名 データ型 PRIMARY KEY</code><br>※この方法は、主キーが1つの列だけで構成されている場合のみ記述可能</td>
+</tr>
+<tr>
+<td style="text-align:left">外部参照制約</td>
+<td style="text-align:left"><code>列名 データ型 REFERENCES 参照先のテーブル名(参照先の一意キー) </code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="表制約の記述方法">表制約の記述方法</h5>
+<p>列の定義とは別に、テーブル全体の定義の最後に制約を記述する方法です。複数の列を組み合わせた制約（複合キーなど）を設定する場合に必要。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">制約名</th>
+<th style="text-align:left">構文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">一意制約</td>
+<td style="text-align:left"><code>CONSTRAINT 制約名 UNIQUE (列名, 列名, ...) </code></td>
+</tr>
+<tr>
+<td style="text-align:left">NOT NULL 制約</td>
+<td style="text-align:left">記述不可</td>
+</tr>
+<tr>
+<td style="text-align:left">主キー制約</td>
+<td style="text-align:left"><code>CONSTRAINT 制約名 PRIMARY KEY (列名, 列名, ...)</code><br>※複合主キーの設定が可能</td>
+</tr>
+<tr>
+<td style="text-align:left">外部参照制約</td>
+<td style="text-align:left"><code>CONSTRAINT 制約名 FOREIGN KEY(列名, 列名, ...) REFERENCES 参照先のテーブル名(参照先の一意キー, 参照先の一意キー, ...)</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="列制約-記述例">列制約 記述例</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> employee( 
+    emp_id VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">PRIMARY</span> KEY, <span class="hljs-comment">-- 主キー制約</span>
+    emp_name VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,  <span class="hljs-comment">-- NULLはNG</span>
+    tel VARCHAR2(<span class="hljs-number">10</span>) <span class="hljs-keyword">UNIQUE</span>, <span class="hljs-comment">-- 重複はNG</span>
+    age NUMBER(<span class="hljs-number">2</span>), 
+    dept_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">2</span>) <span class="hljs-keyword">REFERENCES</span> dept(dept_id) <span class="hljs-comment">-- deptというテーブルを参照</span>
+); 
+</code></pre>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 参照</span>
+<span class="hljs-keyword">REFERENCES</span> テーブル名(主キー)
+</code></pre>
+<h5 id="表制約-記述例">表制約 記述例</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> emp( 
+    emp_id_1 VARCHAR2(<span class="hljs-number">5</span>), 
+    emp_id_2 VARCHAR2(<span class="hljs-number">10</span>), 
+    emp_name VARCHAR2(<span class="hljs-number">10</span>), 
+    tel VARCHAR2(<span class="hljs-number">10</span>), 
+    age NUMBER(<span class="hljs-number">2</span>), 
+    dept_id <span class="hljs-type">CHAR</span>(<span class="hljs-number">2</span>), 
+    <span class="hljs-keyword">PRIMARY</span> KEY(emp_id_1, emp_id_2), 
+    <span class="hljs-keyword">UNIQUE</span>(tel), 
+    <span class="hljs-keyword">FOREIGN</span> KEY(dept_id) <span class="hljs-keyword">REFERENCES</span> dept(dept_id) 
+);
+</code></pre>
+<h4 id="テーブル定義">テーブル定義</h4>
+<h5 id="テーブル定義の例">テーブル定義の例</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">No</th>
+<th style="text-align:left">論理名称</th>
+<th style="text-align:left">物理名称</th>
+<th style="text-align:left">データ型</th>
+<th style="text-align:left">桁数</th>
+<th style="text-align:left">制約</th>
+<th style="text-align:left">備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">社員 ID</td>
+<td style="text-align:left">emp_id</td>
+<td style="text-align:left">NUMBER</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">PRIMARY KEY</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">パスワード</td>
+<td style="text-align:left">emp_pass</td>
+<td style="text-align:left">VARCHAR2</td>
+<td style="text-align:left">10</td>
+<td style="text-align:left">NOT NULL</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">社員名</td>
+<td style="text-align:left">emp_name</td>
+<td style="text-align:left">VARCHAR2</td>
+<td style="text-align:left">20</td>
+<td style="text-align:left">NOT NULL</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">性別</td>
+<td style="text-align:left">gender</td>
+<td style="text-align:left">NUMBER</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">NOT NULL</td>
+<td style="text-align:left">1：男<br>2：女</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">住所</td>
+<td style="text-align:left">address</td>
+<td style="text-align:left">VARCHAR2</td>
+<td style="text-align:left">30</td>
+<td style="text-align:left">—</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">生年月日</td>
+<td style="text-align:left">birthday</td>
+<td style="text-align:left">DATE</td>
+<td style="text-align:left">—</td>
+<td style="text-align:left">—</td>
+<td style="text-align:left">—</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">部署 ID</td>
+<td style="text-align:left">dept_id</td>
+<td style="text-align:left">NUMBER</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">NOT NULL<br>FOREIGN KEY</td>
+<td style="text-align:left">1：総務部<br>2：営業部<br>3：経理部<br>4：資材部</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>論理名称
+<ul>
+<li>プログラマ以外でもわかる名前</li>
+</ul>
+</li>
+<li>物理名称
+<ul>
+<li>実際に書く名前</li>
+</ul>
+</li>
+</ul>
+<h4 id="テーブルの変更">テーブルの変更</h4>
+<p>テーブルの定義を変更したい場合は、<strong><code>ALTER TABLE</code>文</strong>を使う。ALTERは「変える」という意味。</p>
+<h5 id="alter-table文">ALTER TABLE文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> テーブル名 動作の指定 列の定義; 
+ 
+<span class="hljs-comment">-- 例…（列の追加を意味する「ADD」を実行する場合） </span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> dept <span class="hljs-keyword">ADD</span> note VARCHAR2(<span class="hljs-number">500</span>); 
+</code></pre>
+<h5 id="alter-table文の各種機能">ALTER TABLE文の各種機能</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">キーワード</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>ADD</code></td>
+<td style="text-align:left">列の追加。<code>ADD</code>の後に列の定義を記述する。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MODIFY</code></td>
+<td style="text-align:left">列の変更。<code>MODIFY</code>の後に変更後の内容を記述する。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RENAME COLUMN</code></td>
+<td style="text-align:left">列の名前変更。<code>&lt;変更前&gt; TO &lt;変更後&gt;</code>という形で記述する。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>RENAME TO</code></td>
+<td style="text-align:left">テーブル名その変更。<code>TO &lt;新テーブル名&gt;</code>という形で記述する。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>DROP COLUMN</code></td>
+<td style="text-align:left">列の削除。 指定した列を削除する。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="5月11日">5月11日</h1>
+<h2 id="やったこと-1">やったこと</h2>
+<ul>
+<li>CRUD</li>
+<li>トランザクションとロック</li>
+<li>演算子</li>
+<li>集約関数</li>
+<li>レコードのグループ化</li>
+</ul>
+<h2 id="学んだこと-1">学んだこと</h2>
+<h3 id="crud">CRUD</h3>
+<p><strong>CRUD</strong>とは、データの基本の操作を指す。</p>
+<h5 id="crud-1">CRUD</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>登録、作成 (Create)</td>
+<td><code>INSERT</code></td>
+</tr>
+<tr>
+<td>R</td>
+<td>検索、抽出 (Read)</td>
+<td><code>SELECT</code></td>
+</tr>
+<tr>
+<td>U</td>
+<td>更新 (Update)</td>
+<td><code>UPDATE</code></td>
+</tr>
+<tr>
+<td>D</td>
+<td>削除 (Delate)</td>
+<td><code>DELETE</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="crud文">CRUD文</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 基本構文</span>
+<span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> テーブル名 列名 <span class="hljs-keyword">VALUES</span>(値);
+
+<span class="hljs-comment">-- 基本構文 + where句 （つけないと全件処理）</span>
+<span class="hljs-keyword">UPDATE</span> テーブル名 <span class="hljs-keyword">SET</span> 列名 <span class="hljs-operator">=</span> 値 <span class="hljs-keyword">WHERE</span> 条件;
+<span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> テーブル名;
+
+<span class="hljs-comment">-- 基本構文 + α</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> テーブル名;
+<span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">FROM</span> テーブル名;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INSERT</code></br><code>UPDATE</code></br><code>DELETE</code></td>
+<td><strong>更新系SQL</strong></td>
+<td><code>COMMIT</code>で完了する</br>（<code>COMMIT</code>しないと他の人に適用されない）</td>
+</tr>
+<tr>
+<td><code>SELECT</code></td>
+<td><strong>参照系SQL</strong></td>
+<td><code>COMMIT</code>は必要ない</td>
+</tr>
+</tbody>
+</table>
+<h5 id="as句">AS句</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 別名を付ける</span>
+<span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">AS</span> 別名 <span class="hljs-keyword">FROM</span> テーブル名;
+<span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">AS</span> &quot;日本語&quot; <span class="hljs-keyword">FROM</span> テーブル名; <span class="hljs-comment">-- 日本語は&quot;XXX&quot;で囲む</span>
+<span class="hljs-comment">-- 別名は、エイリアスとも呼ばれる</span>
+</code></pre>
+<h5 id="distinct句">DISTINCT句</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 重複を省く</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span> 列名 <span class="hljs-keyword">FROM</span> テーブル名;
+</code></pre>
+<h5 id="where句">WHERE句</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- データの抽出を行う</span>
+<span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">FROM</span> テーブル名 <span class="hljs-keyword">WHERE</span> 条件;
+
+<span class="hljs-comment">-- 条件</span>
+<span class="hljs-keyword">WHERE</span> 列名 <span class="hljs-operator">=</span> 値 <span class="hljs-keyword">AND</span> 列名 <span class="hljs-operator">=</span> 値; <span class="hljs-comment">-- 論理積</span>
+<span class="hljs-keyword">WHERE</span> 列名 <span class="hljs-operator">=</span> 値 <span class="hljs-keyword">OR</span> 列名 <span class="hljs-operator">=</span> 値; <span class="hljs-comment">-- 論理和</span>
+<span class="hljs-keyword">WHERE</span> 列名 <span class="hljs-keyword">BETWEEN</span> 数値a <span class="hljs-keyword">AND</span> 数値b; <span class="hljs-comment">-- aからbを指定</span>
+<span class="hljs-keyword">WHERE</span> 列名 <span class="hljs-keyword">IN</span> (値<span class="hljs-number">1</span>, 値<span class="hljs-number">2</span>, 値<span class="hljs-number">3</span>); <span class="hljs-comment">-- 同じ列に対してORができる</span>
+<span class="hljs-keyword">WHERE</span> 列名 <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%値%&#x27;</span>; <span class="hljs-comment">-- 文字列に対するあいまい検索</span>
+</code></pre>
+<h5 id="rollback文">ROLLBACK文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">ROLLBACK</span>; <span class="hljs-comment">-- 更新前の状態に戻す</span>
+</code></pre>
+<h3 id="トランザクションとロック">トランザクションとロック</h3>
+<p>複数のSQLの処理をひとまとめにしたものを、<strong>トランザクション</strong>という。<br>
+複数の処理の途中でエラーが起きたときには、ロールバックする。</p>
+<p>同じのデータに複数がアクセスした際に、どちらかのデータのみを反映し、もう一方を反映しないことを<strong>ロック</strong>という。</p>
+<p>結果を反映する場合は<code>COMMIT</code>、反映しない場合は<code>ROLLBACK</code>をする。</p>
+<h4 id="ロック">ロック</h4>
+<p>Oracleの場合、<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>が実行されると、<strong>該当レコードにロックがかかり、他トランザクションから変更できなくなる</strong>。<br>
+行（レコード）単位で操作を制限することを「<strong>行レベルロック</strong>」という。</p>
+<p>テーブル全体をロックする「テーブルロック」をすると、デットロックが起こりやすくなる。</p>
+<p>一般的にロックされている状態では、次のような機能が働く。</p>
+<ul>
+<li><code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>を実行した結果は、<code>COMMIT</code>、<code>ROLLBACK</code>をするまで他のユーザの<code>SELECT</code>の結果に反映されない。</li>
+<li><code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>を実行した行は、<code>COMMIT</code>、<code>ROLLBACK</code>をするまで他のユーザは変更できない</li>
+</ul>
+<h4 id="セーブポイント">セーブポイント</h4>
+<p><code>ROLLBACK</code>で処理を戻す際に、どの状態まで戻すかを<code>SAVEPOINT</code>で指定することができる。</p>
+<h5 id="セーブポイント文">セーブポイント文</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- セーブポイントの設定</span>
+<span class="hljs-keyword">SAVEPOINT</span> セーブポイント名;
+
+<span class="hljs-comment">-- 指定したセーブポイントまでロールバック</span>
+<span class="hljs-keyword">ROLLBACK</span> <span class="hljs-keyword">TO</span> セーブポイント名;
+</code></pre>
+<h3 id="演算子">演算子</h3>
+<p>SQLでは四則演算ができる。</p>
+<p>NULLを含んだ計算は、必ずNULLになる。NULLを0で割るとエラーにならずNULLになる。</p>
+<h5 id="比較演算子">比較演算子</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">演算子</th>
+<th style="text-align:left">意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>=</code></td>
+<td style="text-align:left">〜と等しい</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;&gt;</code></td>
+<td style="text-align:left">〜と等しくない</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;=</code></td>
+<td style="text-align:left">〜以上</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;</code></td>
+<td style="text-align:left">〜より大きい</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;=</code></td>
+<td style="text-align:left">〜以下</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;</code></td>
+<td style="text-align:left">〜より小さい</td>
+</tr>
+</tbody>
+</table>
+<h5 id="nullとの比較">NULLとの比較</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">演算子</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">使用例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>IS NULL</code></td>
+<td style="text-align:left">〜は NULL</td>
+<td style="text-align:left"><code>&lt;列名&gt; IS NULL;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>IS NOT NULL</code></td>
+<td style="text-align:left">〜は NULL ではない</td>
+<td style="text-align:left"><code>&lt;列名&gt; IS NOT NULL;</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="like句-あいまい検索">LIKE句 あいまい検索</h4>
+<p><code>LIKE</code> 演算子を使用すると、文字列のパターンマッチング（あいまい検索）を行うことができる。</p>
+<h5 id="1-基本的なワイルドカード">1. 基本的なワイルドカード</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">記号</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">使用例</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>%</code></td>
+<td style="text-align:left"><strong>0文字以上の任意の文字列</strong></td>
+<td style="text-align:left"><code>LIKE 'J%'</code></td>
+<td style="text-align:left">&quot;J&quot; で始まるすべての文字列（&quot;J&quot;, &quot;Java&quot;, &quot;JSON&quot; など）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>_</code></td>
+<td style="text-align:left"><strong>任意の1文字</strong></td>
+<td style="text-align:left"><code>LIKE 'A_'</code></td>
+<td style="text-align:left">&quot;A&quot; で始まる2文字の文字列（&quot;AI&quot;, &quot;An&quot; など）</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2-検索パターンの組み合わせ">2. 検索パターンの組み合わせ</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">パターン</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>'%文字列%'</code></td>
+<td style="text-align:left"><strong>部分一致</strong></td>
+<td style="text-align:left">指定した文字列がどこかに含まれていれば一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>'文字列%'</code></td>
+<td style="text-align:left"><strong>前方一致</strong></td>
+<td style="text-align:left">指定した文字列で始まれば一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>'%文字列'</code></td>
+<td style="text-align:left"><strong>後方一致</strong></td>
+<td style="text-align:left">指定した文字列で終われば一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>'_A%'</code></td>
+<td style="text-align:left"><strong>2文字目がA</strong></td>
+<td style="text-align:left">1文字目は何でもよく、2文字目が &quot;A&quot; で、その後は0文字以上続く</td>
+</tr>
+</tbody>
+</table>
+<h5 id="3-特殊な文字-や-_自体を検索する場合escape">3. 特殊な文字（% や _）自体を検索する場合（ESCAPE）</h5>
+<p>検索したい文字の中に <code>%</code> や <code>_</code> が含まれている場合は、<code>ESCAPE</code> キーワードを使ってそれらを「ただの文字」として扱う。</p>
+<p><strong>例：末尾が &quot;_5&quot; という文字列を検索する場合</strong></p>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">column</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%#_5&#x27;</span> <span class="hljs-keyword">ESCAPE</span> <span class="hljs-string">&#x27;#&#x27;</span>;
+<span class="hljs-comment">-- #のあとの文字は普通の文字として扱う</span>
+
+<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">column</span> <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%1_5&#x27;</span> <span class="hljs-keyword">ESCAPE</span> <span class="hljs-string">&#x27;1&#x27;</span>;
+<span class="hljs-comment">-- エスケープ用の文字は自由に決められる</span>
+</code></pre>
+<h3 id="集約関数">集約関数</h3>
+<h5 id="集約関数の例">集約関数の例</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">関数名</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>COUNT</code></td>
+<td style="text-align:left">レコード数（行数）</td>
+<td style="text-align:left">テーブルのレコード数（行数）を数える</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>SUM</code></td>
+<td style="text-align:left">合計値</td>
+<td style="text-align:left">テーブルの数値列のデータの合計を求める</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>AVG</code></td>
+<td style="text-align:left">平均値</td>
+<td style="text-align:left">テーブルの数値列のデータの平均を求める</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MAX</code></td>
+<td style="text-align:left">最大値</td>
+<td style="text-align:left">テーブルの任意の列のデータの最大値を求める</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>MIN</code></td>
+<td style="text-align:left">最小値</td>
+<td style="text-align:left">テーブルの任意の列のデータの最小値を求める</td>
+</tr>
+</tbody>
+</table>
+<h5 id="集積関数-記述例">集積関数 記述例</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- COUNT関数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">FROM</span> テーブル名; <span class="hljs-comment">-- *が使えるのは、COUNT関数のみ</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(列名) <span class="hljs-keyword">FROM</span> テーブル名;
+
+<span class="hljs-comment">-- SUM関数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">SUM</span>(列名) <span class="hljs-keyword">FROM</span> テーブル名; <span class="hljs-comment">-- 扱えるデータ型はNUMBER型のみ</span>
+
+<span class="hljs-comment">-- AVG関数</span>
+<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(列名) <span class="hljs-keyword">FROM</span> テーブル名; <span class="hljs-comment">-- 扱えるデータ型はNUMBER型のみ</span>
+<span class="hljs-keyword">SELECT</span> ROUND(<span class="hljs-built_in">AVG</span>(列名)) <span class="hljs-keyword">FROM</span> テーブル名; <span class="hljs-comment">-- 小数点以下切り捨て</span>
+
+<span class="hljs-comment">-- WHERE句に関数を直接記述することはできない</span>
+</code></pre>
+<h3 id="レコードのグループ化">レコードのグループ化</h3>
+<p>レコードをいくつかのグループにまとめて集約するとき、<strong><code>GROUP BY</code>句</strong>を使用する。</p>
+<h5 id="group-by句">GROUP BY句</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名<span class="hljs-number">1</span>, 列名<span class="hljs-number">2</span>,・・・ <span class="hljs-keyword">FROM</span> テーブル名 <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 列名<span class="hljs-number">1</span>, 列名<span class="hljs-number">2</span>,・・・;
+
+<span class="hljs-comment">-- GROUP BY句に指定した列の値が同じレコードを、1つの塊にまとめる</span>
+</code></pre>
+<h4 id="グループの絞り込み">グループの絞り込み</h4>
+<p><code>WHERE</code>句ではグループの絞り込みができない。そこで、グループに対する絞り込みは <strong><code>HAVING</code>句</strong>で行う。</p>
+<h5 id="having句">HAVING句</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名<span class="hljs-number">1</span>, 列名<span class="hljs-number">2</span>,・・・
+<span class="hljs-keyword">FROM</span> テーブル名
+<span class="hljs-keyword">WHERE</span> 条件 <span class="hljs-comment">-- 2</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 列名<span class="hljs-number">1</span>, 列名<span class="hljs-number">2</span>,・・・
+<span class="hljs-keyword">HAVING</span> 値に対する条件;
+
+<span class="hljs-comment">-- HAVING句は、必ずGROUP BYの後ろに記述する。</span>
+</code></pre>
+<h5 id="sqlの実行順">SQLの実行順</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名<span class="hljs-number">1</span>, 列名<span class="hljs-number">2</span>,・・・ <span class="hljs-comment">-- 5</span>
+<span class="hljs-keyword">FROM</span> テーブル名  <span class="hljs-comment">-- 1</span>
+<span class="hljs-keyword">WHERE</span> 条件 <span class="hljs-comment">-- 2</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> 列名<span class="hljs-number">1</span>, 列名<span class="hljs-number">2</span>,・・・ <span class="hljs-comment">-- 3</span>
+<span class="hljs-keyword">HAVING</span> 値に対する条件; <span class="hljs-comment">-- 4</span>
+
+<span class="hljs-comment">-- WHEREとGROUP BYでは、WHEREから実行される</span>
+</code></pre>
+<h3 id="並び替え">並び替え</h3>
+<p><code>SELECT</code>文の検索結果を並び替えるとき、<code>ORDER BY</code>句を使用する。</p>
+<h5 id="order-by句">ORDER BY句</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 列名 <span class="hljs-keyword">ASC</span>; <span class="hljs-comment">-- 昇順</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 列名 <span class="hljs-keyword">DESC</span>; <span class="hljs-comment">-- 降順</span>
+
+<span class="hljs-comment">-- ORDER BY句は、一番最後に記述する</span>
+<span class="hljs-comment">-- 実行順も一番最後</span>
+
+<span class="hljs-comment">-- OracleではNULLは最も大きい値として扱う</span>
+</code></pre>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 拡張</span>
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 列名<span class="hljs-number">1</span> <span class="hljs-keyword">ASC</span>, 列名<span class="hljs-number">2</span> <span class="hljs-keyword">DESC</span>; <span class="hljs-comment">-- 列名1で並び替えたあと、列名1で同値のものを列名2で並び替える</span>
+
+<span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">AS</span> 別名
+<span class="hljs-keyword">FROM</span> テーブル名
+<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> 別名 <span class="hljs-keyword">ASC</span>;
+<span class="hljs-comment">-- ORDER BY句は別名を利用できる</span>
+</code></pre>
+<hr>
+<h1 id="5月12日">5月12日</h1>
+<h2 id="やったこと-2">やったこと</h2>
+<ul>
+<li>結合</li>
+<li>集合演算</li>
+<li>サブクエリ</li>
+<li>シーケンス</li>
+<li>ビュー</li>
+<li>インデックス</li>
+<li>正規化</li>
+</ul>
+<h2 id="学んだこと-2">学んだこと</h2>
+<h3 id="結合">結合</h3>
+<p>複数のテーブルのレコードを組み合わせて、1つの<strong>仮想的なテーブルを一時的に作成する</strong>演算のことを、 <strong>結合(<code>JOIN</code>)</strong> という。</p>
+<p>結合の方法は大きく分けて、<strong>内部結合</strong>と<strong>外部結合</strong>に分かれる。</p>
+<p>2つのテーブルに存在する同じデータを、<strong>結合キー</strong>という。</p>
+<h3 id="内部結合">内部結合</h3>
+<p><strong>内部結合では、結合キーの値が両方のテーブルに存在する行を取得する。</strong></p>
+<h5 id="内部結合-構文">内部結合 構文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名
+<span class="hljs-keyword">FROM</span> テーブル名<span class="hljs-number">1</span>
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> テーブル名<span class="hljs-number">2</span>
+  <span class="hljs-keyword">ON</span> テーブル名<span class="hljs-number">1.</span>結合キー <span class="hljs-operator">=</span> テーブル名<span class="hljs-number">2.</span>結合キー;
+</code></pre>
+<div class="flex">
+<div>
+<h5 id="社員テーブル">社員テーブル</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left">氏名</th>
+<th style="text-align:left">部署ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">田中太郎</td>
+<td style="text-align:left">D01</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">鈴木次郎</td>
+<td style="text-align:left">D01</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">渡辺花子</td>
+<td style="text-align:left">D02</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">佐々木良子</td>
+<td style="text-align:left">D03</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">佐藤和也</td>
+<td style="text-align:left">D04</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">中村隆</td>
+<td style="text-align:left">D04</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">鈴木純一</td>
+<td style="text-align:left">D03</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">NO NAME</td>
+<td style="text-align:left">(NULL)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h5 id="部署テーブル">部署テーブル</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">部署ID</th>
+<th style="text-align:left">部署名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">D01</td>
+<td style="text-align:left">開発</td>
+</tr>
+<tr>
+<td style="text-align:left">D02</td>
+<td style="text-align:left">営業</td>
+</tr>
+<tr>
+<td style="text-align:left">D03</td>
+<td style="text-align:left">企画</td>
+</tr>
+<tr>
+<td style="text-align:left">D04</td>
+<td style="text-align:left">総務</td>
+</tr>
+<tr>
+<td style="text-align:left">D05</td>
+<td style="text-align:left">人事</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h5 id="内部結合の出力">内部結合の出力</h5>
+<div class="custom-table">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>氏名</th>
+<th>部署ID</th>
+<th>ID</th>
+<th>部署名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>田中太郎</td>
+<td>D01</td>
+<td>D01</td>
+<td>開発部</td>
+</tr>
+<tr>
+<td>2</td>
+<td>鈴木次郎</td>
+<td>D01</td>
+<td>D01</td>
+<td>開発部</td>
+</tr>
+<tr>
+<td>3</td>
+<td>渡辺花子</td>
+<td>D02</td>
+<td>D02</td>
+<td>教育部</td>
+</tr>
+<tr>
+<td>4</td>
+<td>佐々木良子</td>
+<td>D03</td>
+<td>D03</td>
+<td>営業部</td>
+</tr>
+<tr>
+<td>5</td>
+<td>佐藤和也</td>
+<td>D04</td>
+<td>D04</td>
+<td>総務部</td>
+</tr>
+<tr>
+<td>6</td>
+<td>中村隆</td>
+<td>D04</td>
+<td>D04</td>
+<td>総務部</td>
+</tr>
+<tr>
+<td>7</td>
+<td>鈴木純一</td>
+<td>D03</td>
+<td>D03</td>
+<td>営業部</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="width: 40%; padding: 0vh 1vw;">
+<table>
+<th colspan=3>↓結合しなかった情報は出力されない</th>
+  <tr>
+    <td>8</td>
+    <td>NO NAME</td>
+    <td>(NULL)</td>
+  </tr>
+</table>
+</div>
+<h3 id="外部結合">外部結合</h3>
+<p><strong>結合キーの値の有無にかかわらず、基準となっているテーブルの全レコードが結合、検索される</strong>。</p>
+<h5 id="外部結合-構文">外部結合 構文</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 左外部結合</span>
+<span class="hljs-keyword">SELECT</span> 列名
+<span class="hljs-keyword">FROM</span> テーブル名<span class="hljs-number">1</span>
+<span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> テーブル名<span class="hljs-number">2</span>
+<span class="hljs-keyword">ON</span> テーブル名<span class="hljs-number">1.</span>結合キー <span class="hljs-operator">=</span> テーブル名<span class="hljs-number">2.</span>結合キー;
+
+<span class="hljs-comment">-- 右外部結合</span>
+<span class="hljs-keyword">SELECT</span> 列名
+<span class="hljs-keyword">FROM</span> テーブル名<span class="hljs-number">1</span>
+<span class="hljs-keyword">RIGHT</span> <span class="hljs-keyword">OUTER</span> <span class="hljs-keyword">JOIN</span> テーブル名<span class="hljs-number">2</span>
+<span class="hljs-keyword">ON</span> テーブル名<span class="hljs-number">1.</span>結合キー <span class="hljs-operator">=</span> テーブル名<span class="hljs-number">2.</span>結合キー;
+</code></pre>
+<div class="flex">
+<div>
+<h5 id="社員テーブル-1">社員テーブル</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:left">氏名</th>
+<th style="text-align:left">部署ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">田中太郎</td>
+<td style="text-align:left">D01</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">鈴木次郎</td>
+<td style="text-align:left">D01</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">渡辺花子</td>
+<td style="text-align:left">D02</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">佐々木良子</td>
+<td style="text-align:left">D03</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">佐藤和也</td>
+<td style="text-align:left">D04</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">中村隆</td>
+<td style="text-align:left">D04</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">鈴木純一</td>
+<td style="text-align:left">D03</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">NO NAME</td>
+<td style="text-align:left">(NULL)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h5 id="部署テーブル-1">部署テーブル</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">部署ID</th>
+<th style="text-align:left">部署名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">D01</td>
+<td style="text-align:left">開発</td>
+</tr>
+<tr>
+<td style="text-align:left">D02</td>
+<td style="text-align:left">営業</td>
+</tr>
+<tr>
+<td style="text-align:left">D03</td>
+<td style="text-align:left">企画</td>
+</tr>
+<tr>
+<td style="text-align:left">D04</td>
+<td style="text-align:left">総務</td>
+</tr>
+<tr>
+<td style="text-align:left">D05</td>
+<td style="text-align:left">人事</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h5 id="左外部結合の出力">左外部結合の出力</h5>
+<div class="custom-table-v2">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>氏名</th>
+<th>部署ID</th>
+<th>ID</th>
+<th>部署名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>田中太郎</td>
+<td>D01</td>
+<td>D01</td>
+<td>開発部</td>
+</tr>
+<tr>
+<td>2</td>
+<td>鈴木次郎</td>
+<td>D01</td>
+<td>D01</td>
+<td>開発部</td>
+</tr>
+<tr>
+<td>3</td>
+<td>渡辺花子</td>
+<td>D02</td>
+<td>D02</td>
+<td>教育部</td>
+</tr>
+<tr>
+<td>4</td>
+<td>佐々木良子</td>
+<td>D03</td>
+<td>D03</td>
+<td>営業部</td>
+</tr>
+<tr>
+<td>5</td>
+<td>佐藤和也</td>
+<td>D04</td>
+<td>D04</td>
+<td>総務部</td>
+</tr>
+<tr>
+<td>6</td>
+<td>中村隆</td>
+<td>D04</td>
+<td>D04</td>
+<td>総務部</td>
+</tr>
+<tr>
+<td>7</td>
+<td>鈴木純一</td>
+<td>D03</td>
+<td>D03</td>
+<td>営業部</td>
+</tr>
+<tr>
+<td>8</td>
+<td>NO NAME</td>
+<td>(NULL)</td>
+<td>NULL</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="右外部結合の出力">右外部結合の出力</h5>
+<div class="custom-table-v3">
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>氏名</th>
+<th>部署ID</th>
+<th>ID</th>
+<th>部署名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>田中太郎</td>
+<td>D01</td>
+<td>D01</td>
+<td>開発部</td>
+</tr>
+<tr>
+<td>2</td>
+<td>鈴木次郎</td>
+<td>D01</td>
+<td>D01</td>
+<td>開発部</td>
+</tr>
+<tr>
+<td>3</td>
+<td>渡辺花子</td>
+<td>D02</td>
+<td>D02</td>
+<td>教育部</td>
+</tr>
+<tr>
+<td>4</td>
+<td>佐々木良子</td>
+<td>D03</td>
+<td>D03</td>
+<td>営業部</td>
+</tr>
+<tr>
+<td>5</td>
+<td>佐藤和也</td>
+<td>D04</td>
+<td>D04</td>
+<td>総務部</td>
+</tr>
+<tr>
+<td>6</td>
+<td>中村隆</td>
+<td>D04</td>
+<td>D04</td>
+<td>総務部</td>
+</tr>
+<tr>
+<td>7</td>
+<td>鈴木純一</td>
+<td>D03</td>
+<td>D03</td>
+<td>営業部</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>NULL</td>
+<td>NULL</td>
+<td>D05</td>
+<td>人事部</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="別名を付ける">別名を付ける</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 別名を付ける例</span>
+<span class="hljs-keyword">SELECT</span> si.shop_id, i.item <span class="hljs-comment">-- FROMでつけた別名を使える</span>
+<span class="hljs-keyword">FROM</span> shop_item si <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> item i
+  <span class="hljs-keyword">ON</span> si.item_id <span class="hljs-operator">=</span> i.item_id;
+</code></pre>
+<h3 id="その他の結合">その他の結合</h3>
+<h4 id="3つ以上の結合">3つ以上の結合</h4>
+<p>3つ以上のテーブルの結合も行うことができる。結合できるテーブルの数に制限はない。<br>
+また、内部結合と外部結合を組み合わせることも可能。</p>
+<h5 id="3-つのテーブルを全て内部結合するselect文">3 つのテーブルを全て内部結合するSELECT文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名
+<span class="hljs-keyword">FROM</span> テーブル名<span class="hljs-number">1</span> <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> テーブル名<span class="hljs-number">2</span>
+  <span class="hljs-keyword">ON</span> テーブル名<span class="hljs-number">1.</span>結合キー<span class="hljs-number">1</span> <span class="hljs-operator">=</span> テーブル名<span class="hljs-number">2.</span>結合キー<span class="hljs-number">2</span>
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> テーブル名<span class="hljs-number">3</span>
+  <span class="hljs-keyword">ON</span> テーブル名<span class="hljs-number">2.</span>結合キー<span class="hljs-number">2</span> <span class="hljs-operator">=</span> テーブル名<span class="hljs-number">3.</span>結合キー<span class="hljs-number">3</span>;
+</code></pre>
+<h4 id="自己結合">自己結合</h4>
+<p>同じテーブル同士を結合することもできる</p>
+<h3 id="その他の機能">その他の機能</h3>
+<h3 id="集合演算">集合演算</h3>
+<p>複数のテーブルの検索結果を足したり引いたりする演算のことを、<strong>集合演算</strong>という。</p>
+<h5 id="テーブルの足し算">テーブルの足し算</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- UNION演算子</span>
+<span class="hljs-keyword">SELECT</span> 文
+<span class="hljs-keyword">UNION</span>
+<span class="hljs-keyword">SELECT</span> 文
+</code></pre>
+<h5 id="テーブルの共通部分の検索">テーブルの共通部分の検索</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- INTERSECT演算子</span>
+<span class="hljs-keyword">SELECT</span> 文
+<span class="hljs-keyword">INTERSECT</span>
+<span class="hljs-keyword">SELECT</span> 文
+</code></pre>
+<h5 id="テーブルの引き算">テーブルの引き算</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- MINUS演算子</span>
+<span class="hljs-keyword">SELECT</span> 文
+MINUS
+<span class="hljs-keyword">SELECT</span> 文
+</code></pre>
+<h3 id="サブクエリ">サブクエリ</h3>
+<p>クエリとは、<code>SELECT</code>文のこと。</p>
+<p><strong>サブクエリ</strong>とは、<code>SELECT</code>文の中に入れ子構造で記述された<code>SELECT</code>文のこと。</p>
+<h5 id="サブクエリ-構文">サブクエリ 構文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名
+<span class="hljs-keyword">FROM</span> (<span class="hljs-keyword">SELECT</span> 文)
+[<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">JOIN</span> など]
+</code></pre>
+<p>サブクエリを利用した<code>SELECT</code>文では、<strong>まずサブクエリ内の処理が実行される</strong>。</p>
+<h4 id="in句を使用したサブクエリ">IN句を使用したサブクエリ</h4>
+<p>IN句を使用したサブクエリがよく使われる。</p>
+<h5 id="in句を使用したサブクエリ-構文">IN句を使用したサブクエリ 構文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">SELECT</span> 列名
+<span class="hljs-keyword">FROM</span> テーブル名
+<span class="hljs-keyword">WHERE</span> 列名
+<span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> 文);
+</code></pre>
+<h4 id="スカラサブクエリ">スカラ・サブクエリ</h4>
+<p>スカラ・サブクエリとは、検索結果が<strong>必ず1行1列</strong>のサブクエリのこと。<br>
+スカラとは、単一のという意味。</p>
+<p>例外的に、<code>WHERE</code>句に集約関数を書くことができる。</p>
+<h5 id="where句にスカラサブクエリ">WHERE句にスカラ・サブクエリ</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- 記述例</span>
+<span class="hljs-keyword">SELECT</span> ...
+...
+<span class="hljs-keyword">WHERE</span> sel_price <span class="hljs-operator">&gt;</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(sel_price) <span class="hljs-keyword">FROM</span> item);
+</code></pre>
+<h5 id="エラーになるスカラサブクエリ">エラーになるスカラ・サブクエリ</h5>
+<pre><code class="language-SQL"><span class="hljs-comment">-- スカラ(単一)ではない、通常のサブクエリを使用</span>
+<span class="hljs-keyword">SELECT</span> ...
+...
+<span class="hljs-keyword">WHERE</span> sel_price <span class="hljs-operator">&gt;</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">AVG</span>(sel_price)
+                    <span class="hljs-keyword">FROM</span> item
+                    <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> category_id);
+
+<span class="hljs-comment">-- 複数行返すサブクエリを使用するとエラーになる</span>
+</code></pre>
+<h3 id="シーケンス">シーケンス</h3>
+<p>列に値を登録する際に、自動で入力させたいときに<strong>シーケンス</strong>を使用する。<br>
+自動的に1ずつ増加した数値を登録させる処理を<strong>自動採番</strong>とよぶ。</p>
+<h5 id="シーケンスの作成">シーケンスの作成</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> SEQUENCE シーケンス名 
+[<span class="hljs-keyword">START</span> <span class="hljs-keyword">WITH</span> 初期値] <span class="hljs-comment">-- オプション ↓↓↓</span>
+[INCREMENT <span class="hljs-keyword">BY</span> 増減値] 
+[MAXVALUE 最大値 <span class="hljs-operator">|</span> NOMAXVALUE] 
+[MINVALUE 最小値 <span class="hljs-operator">|</span> NOMINVALUE] 
+[<span class="hljs-keyword">CYCLE</span> <span class="hljs-operator">|</span> NOCYCLE] 
+[CACHE キャッシュ数 <span class="hljs-operator">|</span> NOCACHE]; <span class="hljs-comment">-- オブション ↑↑↑</span>
+</code></pre>
+<h5 id="シーケンスのオプション">シーケンスのオプション</h5>
+<table>
+<thead>
+<tr>
+<th>オプション名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>START WITH</code></strong></td>
+<td><code>START WITH</code> は順序の初期値を指定（省略した場合、昇順では順序の最小値、降順では順序の最大値になる）</td>
+</tr>
+<tr>
+<td><strong><code>INCREMENT BY</code></strong></td>
+<td><code>INCREMENT BY</code> は順序の増減値を指定（省略した場合、<code>1</code> になる）</td>
+</tr>
+<tr>
+<td><code>MAXVALUE</code></td>
+<td><code>MAXVALUE</code> は順序の最大値を指定（省略または <code>NOMAXVALUE</code> とした場合、昇順では <code>10²⁸-1</code>、降順では <code>-1</code> となる）</td>
+</tr>
+<tr>
+<td><code>MINVALUE</code></td>
+<td><code>MINVALUE</code> は順序の最小値を指定（省略または <code>NOMINVALUE</code> とした場合、昇順では <code>1</code>、降順では <code>-(10²⁷-1)</code> となる）</td>
+</tr>
+<tr>
+<td><code>CYCLE</code></td>
+<td><code>CYCLE</code> は順序が最大値または最小値に達しても、値を初期値に戻して生成できる指定（省略または <code>NOCYCLE</code> を指定すると値は生成しなくなる）</td>
+</tr>
+<tr>
+<td><strong><code>CACHE</code></strong></td>
+<td><code>CACHE</code> は高速に順序番号にアクセスできるように、事前にメモリー上に割り当て保持しておく順序番号の数を指定</br>（省略した場合、連番が急に <code>20</code> という飛び番号になる。<strong>飛び番号を防ぐためには、<code>NOCACHE</code> とオプションに指定すること</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="シーケンスの利用">シーケンスの利用</h4>
+<h5 id="シーケンスの利用構文">シーケンスの利用構文</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> テーブル名 <span class="hljs-keyword">VALUES</span>(シーケンス名.NEXTVAL, ...);
+</code></pre>
+<h5 id="シーケンスの疑似列">シーケンスの疑似列</h5>
+<p>|疑似列名|説明|
+|<strong><code>CURRVAL</code></strong>||
+|<strong><code>NEXTVAL</code></strong>||</p>
+<h3 id="ビュー">ビュー</h3>
+<p><strong>ビューとは、任意の<code>SELECT</code>文を一つのオブジェクトとして保存したもの</strong>。<br>
+テンプレートや辞書登録のように、名前をつけて保存することができる。</p>
+<h5 id="ビュー作成">ビュー作成</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> ビュー名 <span class="hljs-keyword">AS</span>
+<span class="hljs-keyword">SELECT</span> 列名 <span class="hljs-keyword">FROM</span> テーブル名
+[<span class="hljs-keyword">WHERE</span>、<span class="hljs-keyword">JOIN</span> など]；
+
+<span class="hljs-comment">-- このASはエイリアスとは別の意味</span>
+<span class="hljs-comment">-- = に近いイメージ</span>
+<span class="hljs-comment">-- 「この『ビューの名前』は、右側の『SELECT文』と同じものとして扱ってね」と定義している</span>
+</code></pre>
+<h3 id="インデックス">インデックス</h3>
+<p><strong>インデックス</strong>とは、テーブル内を検索する際の「<strong>索引</strong>」として使用できるオブジェクトのこと。</p>
+<p>検索が高速化する。</p>
+<h5 id="インデックスの作成">インデックスの作成</h5>
+<pre><code class="language-SQL"><span class="hljs-keyword">CREATE</span> INDEX インデックス名 <span class="hljs-keyword">ON</span> テーブル名(列名);
+
+<span class="hljs-comment">-- 1つのテーブルに複数のインデックスを作成できる</span>
+</code></pre>
+<h3 id="正規化">正規化</h3>
+<p>使いやすいデータベースを作るルールを<strong>正規化</strong>という。</p>
+<p>正規化の方法は、第1正規化、第2、第3...と段階的に用意されている。</p>
+</div>
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
