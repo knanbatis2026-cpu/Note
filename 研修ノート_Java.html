@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x7814;&#x4fee;&#x30ce;&#x30fc;&#x30c8;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        <style>
+/* 手書きノート風スタイル */
+body {
+    font-family: 'Erac ITC', 'Comic Sans MS', cursive, sans-serif !important;
+    background-color: #fffaf0 !important;
+    /* ノート用紙の背景色 */
+    background-image:
+        linear-gradient(#f1e1d1 1px, transparent 1px),
+        linear-gradient(90deg, #f1e1d1 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* 方眼紙風 */
+    color: #4a4a4a !important;
+    line-height: 1.8 !important;
+}
+
+/* 基本設定：小さいウィンドウ（フルスクリーン以外） */
+body {
+    padding: 50px 40px !important;
+}
+
+/* 画面幅が広い場合（例：1024px以上をフルスクリーンとみなす場合） */
+@media screen and (min-width: 1024px) {
+    body {
+        padding: 50px 200px !important;
+    }
+}
+
+/* strong {
+    background: linear-gradient(transparent 20%, #ccffcc 60%);
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #2d5a88 !important;
+    border-bottom: 2px dashed #d1b8a1 !important;
+    padding-bottom: 5px !important;
+    font-weight: bold !important;
+}
+
+ul {
+    list-style-type: square !important;
+}
+
+code {
+    background-color: #fcebeb !important;
+    color: #d1242f !important;
+    padding: 2px 4px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    width: calc(100% - 8px) !important;
+}
+
+pre {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hljs-title.function_ {
+    color: orange !important;
+}
+
+.hljs-title {
+    color: #000000 !important;
+}
+
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+}
+
+th,
+td {
+    border: 1px solid #d1b8a1 !important;
+    padding: 8px !important;
+}
+
+th {
+    background-color: #fdf5e6 !important;
+}
+
+hr {
+    border: 0 !important;
+    border-top: 2px solid #d1b8a1 !important;
+    margin: 30px 0 !important;
+}
+
+.box{
+    border: 3px solid #cc33cccc;
+    padding: 5px;
+    background-color: #fff5;
+}
+</style>
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="研修ノート">研修ノート</h1>
+<h1 id="4月6日">4月6日</h1>
+<h2 id="午前">午前</h2>
+<h3 id="やったこと">やったこと</h3>
+<ul>
+<li>ITサービス、IT企業の種類</li>
+<li>ITエンジニアの分類、仕事</li>
+<li>最新のテクノロジーの調べ方</li>
+<li>セキュリティについて</li>
+</ul>
+<h3 id="新たに学んだこと">新たに学んだこと</h3>
+<ul>
+<li>IT Mediaを利用した情報収集</li>
+<li>リファレンスを確認する必要があること</li>
+</ul>
+<hr>
+<h2 id="午後">午後</h2>
+<h3 id="やったこと-1">やったこと</h3>
+<ul>
+<li>Webサービスが動くまで</li>
+<li>ネットワーク</li>
+<li>通信、プロトコル</li>
+</ul>
+<h3 id="新たに学んだこと-1">新たに学んだこと</h3>
+<ul>
+<li><strong>NAT</strong>（Network Address Translation）
+<ul>
+<li>ローカルIPアドレスをグローバルIPアドレスに変換する</li>
+<li>ルーターなどが行っている</li>
+</ul>
+</li>
+<li><strong>NDS</strong>（Domain Name System）
+<ul>
+<li>ドメインをIPアドレスに変換する
++ネットワークの標準化</li>
+<li>昔はメーカーごとに通信企画が違うため、メーカーが違うと接続できなかった</li>
+<li>→ IEEEとIETFいう国際機関がネットワークの標準化を行った</li>
+</ul>
+</li>
+<li>ローカルIPアドレスは、192.168.XXX.XXXと決まっている</li>
+</ul>
+<h4 id="ネットワーク機器">ネットワーク機器</h4>
+<ul>
+<li><strong>モデム</strong>
+<ul>
+<li>波（アナログ信号）で送られてきたデータを01（デジタル信号）に変換する機器</li>
+</ul>
+</li>
+<li><strong>ルーター</strong>
+<ul>
+<li>ローカルIPアドレスとグローバルIPアドレスを変換する</li>
+</ul>
+</li>
+<li><strong>ハブ</strong>
+<ul>
+<li>LANを更に細かく分ける</li>
+</ul>
+</li>
+</ul>
+<h4 id="通信">通信</h4>
+<ul>
+<li><strong>プロトコル</strong>
+<ul>
+<li>通信の共通化された規格</li>
+</ul>
+</li>
+<li><strong>TCP/IP</strong>
+<ul>
+<li><strong>トランスポート層</strong>
+<ul>
+<li>メール：TCP
+<ul>
+<li>品質重視。一言一句変わってはならない</li>
+</ul>
+</li>
+<li>動画配信：UDP
+<ul>
+<li>スピード重視。途切れても大丈夫</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>インターネット層</strong>
+<ul>
+<li>IPアドレスの管理</li>
+</ul>
+</li>
+<li>**ネットワーク・インターフェース層
+<ul>
+<li>LANケーブルの接続。WiFi</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>ポート</strong>
+<ul>
+<li>PC内でアプリケーションを識別のための番号</li>
+<li>IPアドレスでPCまでデータが送られ、PC内部でのポート番号を使ってアプリまで届けられる</li>
+<li><strong>IANA</strong>（Internet Assigned Numbers Authority）によって、IPアドレス、ポート番号などを管理している</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="4月7日">4月7日</h1>
+<h2 id="午前-1">午前</h2>
+<h3 id="やったこと-2">やったこと</h3>
+<ul>
+<li>プログラム</li>
+<li>スクラップ
+<ul>
+<li>ゲーム制作</li>
+<li>変数</li>
+</ul>
+</li>
+</ul>
+<h2 id="午後-1">午後</h2>
+<h3 id="やったこと-3">やったこと</h3>
+<ul>
+<li>アルゴリズム</li>
+<li>フローチャート</li>
+<li>ChatGPT</li>
+</ul>
+<hr>
+<h1 id="4月10日">4月10日</h1>
+<h2 id="午前-2">午前</h2>
+<h3 id="やったこと-4">やったこと</h3>
+<ul>
+<li>Java</li>
+</ul>
+<h3 id="新たに学んだこと-2">新たに学んだこと</h3>
+<h4 id="java">Java</h4>
+<ul>
+<li>いままでの言語（C言語）などは、OS依存だった（Mac用に作ったら、Windowsで動かない）</li>
+<li>JavaはJVM（Java仮想マシン）によって、非依存性の言語が売りだった</li>
+<li>Javaはガベージコレクションでメモリ管理をしなくていい
+<ul>
+<li>C言語はメモリ管理が必須だった</li>
+</ul>
+</li>
+</ul>
+<h3 id="テスト">テスト</h3>
+<ul>
+<li>プログラミング言語を機械語に翻訳することを<strong>コンパイル</strong>するといい、翻訳ソフトを<strong>コンパイラ</strong>という
+<ul>
+<li>Javaは<strong>2度に分けて翻訳</strong>する</li>
+<li>コンパイル後は<strong>バイトコード</strong>と呼ばれる中間言語に変換され、<strong>クラスファイル</strong>が作成される</li>
+<li>実行時に<strong>インタプリタ</strong>がバイトコードを機械語に翻訳して実行してくれる</li>
+<li>クラスファイルをOSごとのJVMが読み取りOSごとの機械語に翻訳するため、OSに依存しない</li>
+</ul>
+</li>
+<li>翻訳方法の違い
+<ul>
+<li>コンパイラ：<strong>ソースコード全体を一気に</strong>翻訳する</li>
+<li>インタプリタ：実行ごとに、クラスファイルを<strong>一行ずつ</strong>翻訳する</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="4月13日">4月13日</h1>
+<h2 id="午前-3">午前</h2>
+<h3 id="やったこと-5">やったこと</h3>
+<h4 id="java-1">java</h4>
+<ul>
+<li>変数
+<ul>
+<li>初期化</li>
+</ul>
+</li>
+<li>標準入力</li>
+<li>演算子</li>
+</ul>
+<h3 id="新たに学んだこと-3">新たに学んだこと</h3>
+<h4 id="変数">変数</h4>
+<ul>
+<li><strong>変数の宣言</strong>
+<ul>
+<li>Javaは変数を宣言するときに型も宣言する必要がある
+<ul>
+<li><strong>動的型付け言語</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>変数の初期化</strong>
+<ul>
+<li>変数宣言時に初期値を代入すること<pre><code class="language-java">  <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>float型は、数値の末尾に「f」をつける必要がある<pre><code class="language-java">  <span class="hljs-type">float</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">1.75f</span>;
+</code></pre>
+</li>
+</ul>
+<h4 id="標準入力">標準入力</h4>
+<ul>
+<li>一度だけでいい<pre><code class="language-java"><span class="hljs-type">BufferedReader</span> <span class="hljs-variable">reader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedReader</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InputStreamReader</span>(System.in));
+<span class="hljs-type">String</span> <span class="hljs-variable">str1</span> <span class="hljs-operator">=</span> reader.readLine();
+<span class="hljs-type">String</span> <span class="hljs-variable">str2</span> <span class="hljs-operator">=</span> reader.readLine();
+<span class="hljs-type">String</span> <span class="hljs-variable">str3</span> <span class="hljs-operator">=</span> reader.readLine();
+</code></pre>
+</li>
+</ul>
+<h4 id="演算子">演算子</h4>
+<pre><code>nunber + 3
+</code></pre>
+<ul>
+<li><code>+</code>、<code>&lt;</code> などを<strong>演算子</strong>（operator）という。</li>
+<li><code>nunber</code>、<code>3</code>などを<strong>オペランド</strong>という。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>演算子</th>
+<th>名前</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>加算、<strong>文字列連結</strong></td>
+<td>文字列をつなげる</td>
+</tr>
+<tr>
+<td>(型)</td>
+<td>キャスト演算子</td>
+<td>型を無理やり変換する</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num++</td>
+<td>後置インクリメント</td>
+<td>他の処理が終わったあとにインクリメント</td>
+</tr>
+<tr>
+<td>++num</td>
+<td>前置インクリメント</td>
+<td>他の処理の前にインクリメント</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java"><span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> <span class="hljs-number">5</span>;
+<span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> <span class="hljs-number">6</span>;
+System.out.println(<span class="hljs-string">&quot;num1*num2=&quot;</span> + num1 * num2);
+System.out.println(<span class="hljs-string">&quot;num1+num2 = &quot;</span> + num1 + num2);
+
+<span class="hljs-comment">// 計算結果</span>
+num1 * num2 = <span class="hljs-number">30</span>
+num1 + num2 = <span class="hljs-number">56</span>
+
+<span class="hljs-comment">// `+` が文字列の結合になっている</span>
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">// 修正</span>
+System.out.println(<span class="hljs-string">&quot;num1+num2 = &quot;</span> + (num1 + num2));
+</code></pre>
+<h4 id="キャスト">キャスト</h4>
+<pre><code class="language-java"><span class="hljs-type">int</span> <span class="hljs-variable">inum1</span> <span class="hljs-operator">=</span> <span class="hljs-number">170</span>;
+<span class="hljs-type">double</span> <span class="hljs-variable">dnum1</span> <span class="hljs-operator">=</span> inum1;
+</code></pre>
+<p>小数<code>double</code> &gt; 整数<code>int</code></p>
+<p>大きい箱への代入はOK<br>
+ただし、小数型として出力される</p>
+<p>P.85</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">種類</th>
+<th style="text-align:left">名前</th>
+<th style="text-align:left">ビット数</th>
+<th style="text-align:left">データの範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">真偽値</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">1 ビット</td>
+<td style="text-align:left">true または false</td>
+</tr>
+<tr>
+<td style="text-align:left">整数型</td>
+<td style="text-align:left">byte</td>
+<td style="text-align:left">8 ビット</td>
+<td style="text-align:left">1 バイト整数 (-128～127)</td>
+</tr>
+<tr>
+<td style="text-align:left">整数型</td>
+<td style="text-align:left">short</td>
+<td style="text-align:left">16 ビット</td>
+<td style="text-align:left">2 バイト整数 (-32768～32767)</td>
+</tr>
+<tr>
+<td style="text-align:left">整数型</td>
+<td style="text-align:left">int</td>
+<td style="text-align:left">32 ビット</td>
+<td style="text-align:left">4 バイト整数 (-2147483648～2147483647)</td>
+</tr>
+<tr>
+<td style="text-align:left">整数型</td>
+<td style="text-align:left">long</td>
+<td style="text-align:left">64 ビット</td>
+<td style="text-align:left">8 バイト整数 (-9223372036854775808～9223372036854775807)</td>
+</tr>
+<tr>
+<td style="text-align:left">浮動小数点型</td>
+<td style="text-align:left">float</td>
+<td style="text-align:left">32 ビット</td>
+<td style="text-align:left">4 バイト単精度浮動小数点数</td>
+</tr>
+<tr>
+<td style="text-align:left">浮動小数点型</td>
+<td style="text-align:left">double</td>
+<td style="text-align:left">64 ビット</td>
+<td style="text-align:left">8 バイト倍精度浮動小数点数</td>
+</tr>
+<tr>
+<td style="text-align:left">文字型</td>
+<td style="text-align:left">char</td>
+<td style="text-align:left">16 ビット</td>
+<td style="text-align:left">2 バイト文字 (\u0000～\uffff)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="4月14日">4月14日</h1>
+<h2 id="やったこと-6">やったこと</h2>
+<ul>
+<li>配列</li>
+<li>条件分岐
+<ul>
+<li>if文</li>
+</ul>
+</li>
+</ul>
+<h2 id="学んだこと">学んだこと</h2>
+<h3 id="配列">配列</h3>
+<ul>
+<li>変数は、1つの変数は<strong>1つの値</strong>しか扱えない</li>
+<li>配列は、<strong>同じ型の複数の値</strong>を扱うことができる</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-type">int</span> height[] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">4</span>];
+</code></pre>
+<ul>
+<li><code>int height[]</code>を<strong>配列変数</strong>という</li>
+<li><code>new int[4]</code>を<strong>配列要素</strong>という</li>
+<li><code>[4]</code>を<strong>要素数</strong>という
+<ul>
+<li>最初に決めた要素数は、<strong>途中から変えることができない</strong></li>
+</ul>
+</li>
+<li>Javaは配列を<strong>0番目</strong>から数える
+<ul>
+<li>何番目を表す数字を、<strong>インデックス</strong>(添字)という</li>
+</ul>
+</li>
+<li>要素数を超えるとエラー</li>
+</ul>
+<pre><code class="language-java">System.out.println(height);
+
+<span class="hljs-comment">// 出力</span>
+[I@72ea2f77
+</code></pre>
+<ul>
+<li><code>new</code>は参照型という仕組み</li>
+<li>参照型を出力すると参照値が出てしまう。</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-comment">// 配列のコピー</span>
+<span class="hljs-type">int</span>[] height2 = height;
+height2[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+System.out.println(<span class="hljs-string">&quot;height[0] = &quot;</span> + height[<span class="hljs-number">0</span>]);
+System.out.println(<span class="hljs-string">&quot;height2[0] = &quot;</span> + height2[<span class="hljs-number">0</span>]);
+
+<span class="hljs-comment">// 出力</span>
+height[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>
+height2[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>
+</code></pre>
+<ul>
+<li>配列の代入は、<strong>データの位置</strong>(参照)をコピーする
+<ul>
+<li>これを、<strong>シャローコピー</strong>（浅いコピー）という</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-type">int</span>[] height = {<span class="hljs-number">162</span>, <span class="hljs-number">177</span>, <span class="hljs-number">154</span>, <span class="hljs-number">185</span>};
+</code></pre>
+<ul>
+<li><strong>配列の初期化</strong>
+<ul>
+<li>配列変数の宣言、要素数の決定、代入を1行で表現</li>
+</ul>
+</li>
+<li><strong>順次処理</strong>: 上から順番に実行していく</li>
+</ul>
+<h3 id="条件分岐">条件分岐</h3>
+<ul>
+<li>条件：もし〇〇だったら、もじ〇〇じゃなかったら
+<ul>
+<li>条件は式として評価される。条件は<code>True(真)</code>、<code>False(偽)</code>を返す</li>
+</ul>
+</li>
+</ul>
+<h4 id="関係演算子">関係演算子</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">演算子</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">記述例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong><code>==</code></strong></td>
+<td style="text-align:left">左辺と右辺は等しい</td>
+<td style="text-align:left">a == b</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>!=</code></strong></td>
+<td style="text-align:left">左辺と右辺は等しくない</td>
+<td style="text-align:left">a != b</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&gt;</code></strong></td>
+<td style="text-align:left">左辺は右辺より大きい</td>
+<td style="text-align:left">a &gt; b</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&gt;=</code></strong></td>
+<td style="text-align:left">左辺は右辺より大きい、または等しい</td>
+<td style="text-align:left">a &gt;= b</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&lt;</code></strong></td>
+<td style="text-align:left">左辺は右辺より小さい</td>
+<td style="text-align:left">a &lt; b</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&lt;=</code></strong></td>
+<td style="text-align:left">左辺は右辺より小さい、または等しい</td>
+<td style="text-align:left">a &lt;= b</td>
+</tr>
+</tbody>
+</table>
+<h4 id="if文">if文</h4>
+<pre><code class="language-java"><span class="hljs-comment">// if構文のネスト</span>
+<span class="hljs-keyword">if</span> (条件<span class="hljs-number">1</span>){
+    <span class="hljs-keyword">if</span> (条件<span class="hljs-number">2</span>){
+        処理;
+    }
+}
+</code></pre>
+<h4 id="switch文">switch文</h4>
+<pre><code class="language-java"><span class="hljs-keyword">switch</span> (条件<span class="hljs-number">1</span>){
+    <span class="hljs-keyword">case</span> 値<span class="hljs-number">1</span>:
+        処理<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> 値<span class="hljs-number">2</span>:
+        処理<span class="hljs-number">2</span>;
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        処理<span class="hljs-number">3</span>;
+        <span class="hljs-keyword">break</span>;
+}
+</code></pre>
+<ul>
+<li><code>case 値</code>は、<code>条件1 == 値</code> という意味
+<ul>
+<li><code>=&lt; 値</code>などの書き方はできない</li>
+</ul>
+</li>
+<li><code>break</code>は処理を止める という意味</li>
+</ul>
+<h4 id="三項演算子">三項演算子</h4>
+<pre><code class="language-java">変数 = (条件式) ? <span class="hljs-string">&quot;真（Yes）のとき&quot;</span> : <span class="hljs-string">&quot;偽（No）のとき&quot;</span>;
+</code></pre>
+<hr>
+<h1 id="4月15日">4月15日</h1>
+<h2 id="やったこと-7">やったこと</h2>
+<ul>
+<li>for文</li>
+<li>while文
+<ul>
+<li>do~while文</li>
+</ul>
+</li>
+<li>デバック</li>
+</ul>
+<h2 id="学んだこと-1">学んだこと</h2>
+<h3 id="for文">for文</h3>
+<pre><code class="language-java"><span class="hljs-keyword">for</span> (初期化の式; 条件; 変化式){
+    繰り返し処理;
+}
+<span class="hljs-comment">// 例</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++){
+    処理;
+}
+</code></pre>
+<ul>
+<li>初期化の式
+<ul>
+<li><strong>最初に一回だけ</strong>実行される処理</li>
+<li>一般的には、繰り返した回数を保存するための変数を初期化する式を記述する
+<ul>
+<li>この変数を<strong>ループカウンタ</strong>という</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>条件式
+<ul>
+<li>trueの場合、ブロック内の処理を一回分実行する</li>
+</ul>
+</li>
+<li>変化式
+<ul>
+<li>ブロック内の処理が完了したときに実行される処理。</li>
+<li>一般的には、ループカウンタの値を変化させる処理を記述する</li>
+</ul>
+</li>
+</ul>
+<h3 id="while文">while文</h3>
+<pre><code class="language-java"><span class="hljs-comment">// 前判定</span>
+<span class="hljs-keyword">while</span> (条件){
+    繰り返し処理
+}
+
+<span class="hljs-comment">// 条件を満たしてる場合、何度でも繰り返す</span>
+</code></pre>
+<h3 id="dowhile文">do~while文</h3>
+<pre><code class="language-java"><span class="hljs-comment">// 後判定</span>
+<span class="hljs-keyword">do</span> {
+    繰り返し処理;
+} <span class="hljs-keyword">while</span> (条件式);
+
+<span class="hljs-comment">// while文と同じ様に、条件を満たしている場足、何度でも繰り返す  </span>
+<span class="hljs-comment">// ただし、**最初の1回は必ず**繰り返し処理が実行される</span>
+</code></pre>
+<h3 id="デバック">デバック</h3>
+<p>Eclipseには<strong>デバックモード</strong>と呼ばれる機能がある</p>
+<hr>
+<h1 id="4月17日">4月17日</h1>
+<h2 id="やったこと-8">やったこと</h2>
+<ul>
+<li>オブジェクト指向型言語</li>
+<li>クラス</li>
+<li>メソッド</li>
+</ul>
+<h2 id="学んだこと-2">学んだこと</h2>
+<h3 id="オブジェクト指向">オブジェクト指向</h3>
+<p>オブジェクトを生成する必要がある</p>
+<ul>
+<li>オブジェクトが持っている<strong>データ</strong>を、<strong>フィールド</strong>という</li>
+<li>オブジェクトが持っている<strong>動き</strong>を、<strong>メソッド</strong>という</li>
+</ul>
+<h4 id="オブジェクト指向のメリット">オブジェクト指向のメリット</h4>
+<ul>
+<li>プログラムを用意に変更しやすくなる（<strong>柔軟性・保守性の向上</strong>）</li>
+<li>プログラムの一部を簡単に転用できる（<strong>再利用性の向上</strong>）</li>
+</ul>
+<h3 id="クラスとは">クラスとは</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>フィールド</strong></td>
+<td>「<strong>状態・性質</strong>」を表す情報</td>
+</tr>
+<tr>
+<td><strong>メソッド</strong></td>
+<td>「<strong>機能</strong>」を表す情報</td>
+</tr>
+</tbody>
+</table>
+<p>フィールドとメソッドをあわせて、<strong>メンバ</strong>という</p>
+<p>新しくクラスを作成することを「<strong>クラスを宣言する</strong>」という</p>
+<pre><code class="language-java"><span class="hljs-comment">// クラスの宣言</span>
+
+class クラス名 {
+    <span class="hljs-comment">// フィールド</span>
+    ...
+
+    <span class="hljs-comment">// メソッド</span>
+    ...
+}
+
+<span class="hljs-comment">// **クラスは宣言しただけでは、生成されない**  </span>
+<span class="hljs-comment">// 設計図を作った段階</span>
+</code></pre>
+<p><strong>クラスは宣言しただけでは、生成されない</strong><br>
+設計図を作った段階</p>
+<p>クラスはファイルを分ける</p>
+<ul>
+<li>設計図（オブジェクト）のクラスにはmainメソッドは書かない</li>
+</ul>
+<h4 id="クラスの集約">クラスの集約</h4>
+<p>フィールドに別のクラスをもたせることができる</p>
+<pre><code class="language-java"><span class="hljs-comment">// クラスの集約</span>
+<span class="hljs-comment">/**
+ * 人間クラス
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Human</span> {
+	String name;
+	Phone phone;
+}
+<span class="hljs-comment">/**
+ * 携帯電話クラス
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Phone</span> {
+    <span class="hljs-type">int</span> fee;
+    <span class="hljs-type">double</span> data;
+}
+
+<span class="hljs-comment">/**
+ * 実行クラス
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Human</span> <span class="hljs-variable">human</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Human</span>();
+        <span class="hljs-type">Phone</span> <span class="hljs-variable">iphone</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Phone</span>();
+
+        human.name = <span class="hljs-string">&quot;難波&quot;</span>;
+		human.phone = iPhone;
+
+		human.phone.fee = <span class="hljs-number">8000</span>;
+		human.phone.data = <span class="hljs-number">5.5</span>;
+    }
+}
+</code></pre>
+<h5 id="基本型参照型とは">基本型、参照型とは？</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">データ型の種類</th>
+<th style="text-align:left">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>基本型</strong></td>
+<td style="text-align:left">数値、文字、真偽値（true または false）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>参照型</strong></td>
+<td style="text-align:left">クラス、配列など基本データ型以外のモノ</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java"><span class="hljs-comment">// 参照型</span>
+変数 = <span class="hljs-keyword">new</span> クラス名();
+
+<span class="hljs-comment">// オブジェクト本体ではなく、参照値（メモリの住所）を入れている</span>
+</code></pre>
+<h3 id="メソッド">メソッド</h3>
+<pre><code class="language-java"><span class="hljs-comment">// メソッドの定義</span>
+戻り値の型 メソッド名 (引数リスト){
+    処理;
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">// メソッドの呼び出し</span>
+変数名.メソッド名(引数リスト);
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">// 実引数と仮引数</span>
+<span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">baisuu</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span>{
+    <span class="hljs-keyword">return</span> x * <span class="hljs-number">2</span>;
+}
+
+<span class="hljs-comment">// main</span>
+<span class="hljs-type">int</span>
+<span class="hljs-variable">i</span> <span class="hljs-operator">=</span> baisuu(x)
+</code></pre>
+<p>同じ<code>x</code>でも、呼び出し元の<code>x</code>を<strong>実引数</strong>といい、メソッド定義側の<code>x</code>を<strong>仮引数</strong>という</p>
+<h4 id="戻り値">戻り値</h4>
+<pre><code class="language-java"><span class="hljs-keyword">return</span> 戻り値;
+</code></pre>
+<p>javaは、<strong>一つの戻り値しか指定できない</strong></p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> クラス名 メソッド名() {
+    クラス名.変数<span class="hljs-number">1</span> = 値;
+    クラス名.変数<span class="hljs-number">2</span> = 値;
+    クラス名.変数<span class="hljs-number">3</span> = 値;
+
+    <span class="hljs-keyword">return</span> クラス名;
+}
+<span class="hljs-comment">// オブジェクトを使うことで、複数の値を返すことができる</span>
+</code></pre>
+<hr>
+<h1 id="4月21日">4月21日</h1>
+<h2 id="やったこと-9">やったこと</h2>
+<ul>
+<li>アクセス修飾子</li>
+<li>カプセル化</li>
+<li>オーバーロード</li>
+</ul>
+<h2 id="学んだこと-3">学んだこと</h2>
+<h3 id="アクセス修飾子">アクセス修飾子</h3>
+<p>原則、フィールドには<code>private</code>、メソッドには<code>public</code>をつける。</p>
+<table>
+<thead>
+<tr>
+<th>アクセス修飾子</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private修飾子</td>
+<td><strong>他のクラスからアクセスできない</strong></td>
+</tr>
+<tr>
+<td>public修飾子</td>
+<td><strong>他のクラスからアクセス可能</strong></td>
+</tr>
+</tbody>
+</table>
+<p>private と public を利用すれば想定外の値の受け渡しを防ぐことができる。</p>
+<h5 id="アクセス修飾子-1">アクセス修飾子</h5>
+<table>
+<thead>
+<tr>
+<th>修飾子名</th>
+<th>アクセスを許可する範囲</th>
+<th>記述できる場所</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private</code></td>
+<td>同一クラスのみ</td>
+<td>フィールド、メソッド、コンストラクタ</td>
+</tr>
+<tr>
+<td>記述なし</td>
+<td>同一パッケージのみ</td>
+<td>フィールド、メソッド、コンストラクタ、クラス</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>同一パッケージ内のクラス、または自身を継承したクラス（パッケージが異なる場合でもアクセス可能）</td>
+<td>フィールド、メソッド、コンストラクタ</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>すべてのクラス</td>
+<td>フィールド、メソッド、コンストラクタ、クラス</td>
+</tr>
+</tbody>
+</table>
+<h3 id="カプセル化">カプセル化</h3>
+<p>private メンバへの操作について、public メンバを経由するようにアクセス制限をかけることを<strong>カプセル化</strong>という。</p>
+<h4 id="アクセサ">アクセサ</h4>
+<p>フィールドへの値の代入および値の取得に特化したメソッドを<strong>アクセサ</strong>（アクセサメソッド）という。</p>
+<ul>
+<li>フィールドの値を取得するためのメソッドを<code>getter</code>（getterメソッド）という。</li>
+<li>フィールドに値を代入するためのメソッドを<code>setter</code>（setterメソッド）という。</li>
+</ul>
+<pre><code class="language-java"><span class="hljs-keyword">private</span> <span class="hljs-type">Stirng</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;
+
+<span class="hljs-comment">// 1</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span>{
+    name = name;
+}
+
+<span class="hljs-comment">// 2</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String n)</span>{
+    name = n;
+}
+
+<span class="hljs-comment">// 1は正しく動かない</span>
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">// 修正</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setName</span><span class="hljs-params">(String name)</span>{
+    <span class="hljs-built_in">this</span>.name = name;
+}
+
+<span class="hljs-built_in">this</span>.xxx <span class="hljs-comment">// フィールドの変数名を表す</span>
+</code></pre>
+<pre><code class="language-markdown"><span class="hljs-section"># Eclipseでの自動入力</span>
+
+右クリック
+→ ソース
+→ getter および setter の生成
+</code></pre>
+<h3 id="メソッドのオーバーロード">メソッドのオーバーロード</h3>
+<p>同じクラス内に似たようとのメソッドを複数作るとき、同じメソッド名を命名することができる。<br>
+この仕組みのことを、<strong>オーバーロード</strong>（多重定義）という。</p>
+<h3 id="コンストラクタ">コンストラクタ</h3>
+<p><strong>オブジェクトが生成されるときに、一度だけ実行される処理</strong>のこと。</p>
+<p>主に、<strong>オブジェクトのフィールドに初期値を設定する</strong>用途で使用される。</p>
+<pre><code class="language-java"><span class="hljs-keyword">new</span> クラス名(); <span class="hljs-comment">// コンストラクタが動く。</span>
+</code></pre>
+<pre><code class="language-java"># Humanクラス
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Human</span>() {
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> age;
+
+    <span class="hljs-comment">// コンストラクタ</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Human</span><span class="hljs-params">(String name, <span class="hljs-type">int</span> age)</span> {
+        <span class="hljs-built_in">this</span>.name = name;
+        <span class="hljs-built_in">this</span>.age = age;
+    }
+}
+
+# メインクラス
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span>(){
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span>{
+        <span class="hljs-type">var</span> <span class="hljs-variable">tarou</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Human</span>(<span class="hljs-number">20</span>,<span class="hljs-string">&quot;太郎&quot;</span>); <span class="hljs-comment">// コンストラクタの呼び出し</span>
+    }
+}
+</code></pre>
+<pre><code class="language-markdown"><span class="hljs-section"># Eclipseでの自動入力</span>
+
+右クリック
+→ ソース
+→ フィールドを使用してコンストラクターを生成
+</code></pre>
+<p>コンストラクタもオーバーロードを行うことができる。</p>
+<p><strong>コンストラクタに戻り値を指定することはできない</strong></p>
+<hr>
+<h1 id="4月22日">4月22日</h1>
+<h2 id="やったこと-10">やったこと</h2>
+<ul>
+<li>staticメンバ</li>
+<li>インスタンス</li>
+<li>クラスライブラリ</li>
+<li>参照</li>
+<li>継承</li>
+</ul>
+<h2 id="学んだこと-4">学んだこと</h2>
+<h3 id="staticメンバとインスタンス">staticメンバとインスタンス</h3>
+<p><strong>staticは、オブジェクト生成をしないで、フィールドやメソッドを呼び出せる。</strong></p>
+<h4 id="インスタンス">インスタンス</h4>
+<p><strong>インスタンスとは、オブジェクトのことを指す</strong>言葉。</p>
+<ul>
+<li>
+<p>staticとは逆に、インスタンスはオブジェクト生成してから使うものを指す。</p>
+<ul>
+<li>インスタンス〇〇、はオブジェクトに紐付けられているため、親のオブジェクト生成が必要。</li>
+</ul>
+</li>
+<li>
+<p>ローカル変数</p>
+<ul>
+<li>ブロック内で定義した変数は、同じブロック内でしかつかえない</li>
+</ul>
+</li>
+</ul>
+<h4 id="static">static</h4>
+<p>オブジェクトに関連付けられていないメンバも定義できる<br>
+staticメンバは、オブジェクトではなく、<strong>クラス全体</strong>に関連付けられたメンバとして扱われる</p>
+<pre><code class="language-java"><span class="hljs-comment">// static変数の宣言</span>
+<span class="hljs-keyword">static</span> 型名 変数名;
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> 型名 変数名;
+
+<span class="hljs-comment">// staticメソッドの定義</span>
+<span class="hljs-keyword">static</span> 戻り値の型 メソッド名(引数リスト) {
+    処理;
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">// staticメソッドの呼び出し</span>
+クラス名.<span class="hljs-keyword">static</span>メソッド名
+</code></pre>
+<p><strong>オブジェクト名ではなくクラス名で呼び出す。</strong></p>
+<p>static付きの変数を、<strong>クラス変数</strong>という。</p>
+<pre><code class="language-java"><span class="hljs-comment">// staticメソッドでインスタンス変数にはアクセスできない</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> メソッド名() {
+    <span class="hljs-built_in">this</span>.インスタンス変数名 ~~~
+}
+</code></pre>
+<h4 id="用語">用語</h4>
+<table>
+<thead>
+<tr>
+<th>用語</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>インスタンス変数</strong></td>
+<td>フィールドと同じ意味</td>
+</tr>
+<tr>
+<td><strong>インスタンスメソッド</strong></td>
+<td>メソッドと同じ意味</td>
+</tr>
+<tr>
+<td><strong>ローカル変数</strong></td>
+<td>メソッドの中でしかつかえない変数のこと</td>
+</tr>
+<tr>
+<td><strong>クラス変数</strong></td>
+<td>static変数。クラスが持っている共通の変数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="クラスライブラリ">クラスライブラリ</h3>
+<p>汎用的な機能を持ったプログラムの集まりのことを<strong>クラスライブラリ</strong>という。</p>
+<p>使い方は<strong>リファレンス</strong>に書いてある。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>クラスライブラリ</strong></td>
+<td>Javaが最初から用意してくれている、よく利用されるクラスの集まり</td>
+</tr>
+<tr>
+<td><strong>リファレンス</strong></td>
+<td>クラスが持つ機能（メソッド）やデータ（フィールド）の一覧、使い方、制約をまとめた公式な説明書</td>
+</tr>
+</tbody>
+</table>
+<h4 id="文字列を扱うクラスstringクラス">文字列を扱うクラス（Stringクラス）</h4>
+<p>Stringクラスは<strong>文字列を扱う</strong>ために設計されたクラス<br>
+文字列はこのクラスから生成されたオブジェクトとして扱われる</p>
+<p>Stringクラスには文字列を操作するメソッドも定義されているs</p>
+<h5 id="stringクラスのメソッド抜粋">Stringクラスのメソッド（抜粋）</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">メソッド名</th>
+<th style="text-align:left">機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>int indexOf(int ch)</code></td>
+<td style="text-align:left">引数の文字が最初に出現する位置を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int indexOf(String str)</code></td>
+<td style="text-align:left">引数の文字列が最初に出現する位置を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>String substring(int from)</code></td>
+<td style="text-align:left">引数の位置から最後までの部分文字列を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>String substring(int from, int to)</code></td>
+<td style="text-align:left">開始位置と終了位置を指定して部分文字列を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>String concat(String str)</code></td>
+<td style="text-align:left">引数を連結した文字列を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>String toLowerCase()</code></td>
+<td style="text-align:left">小文字に変換した文字列を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>String toUpperCase()</code></td>
+<td style="text-align:left">大文字に変換した文字列を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>String replace(CharSequence a, CharSequence b)</code></td>
+<td style="text-align:left">&quot;a&quot;を&quot;b&quot;に置き換えた文字列を返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>int length()</code></td>
+<td style="text-align:left">文字列の長さを返す</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>boolean equals(Object anObject)</code></td>
+<td style="text-align:left">オブジェクトに格納されている文字列が同じであるか判断する</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>boolean startsWith(String prefix)</code></td>
+<td style="text-align:left">文字列が引数の文字列で始まるか判断する</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>boolean endsWith(String suffix)</code></td>
+<td style="text-align:left">文字列が引数の文字列で終わるか判断する</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>char charAt(int index)</code></td>
+<td style="text-align:left">引数の位置の文字を返す</td>
+</tr>
+</tbody>
+</table>
+<h3 id="クラス型の変数">クラス型の変数</h3>
+<p><strong>値渡し</strong>と<strong>参照渡し</strong>とは、変数への代入やメソッドの引数、戻り値のデータの受け渡し方を表す言葉。</p>
+<table>
+<thead>
+<tr>
+<th>用語</th>
+<th>仕組み</th>
+<th>内容</th>
+<th>対象の型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>値渡し</strong></td>
+<td>基本型による値の代入</td>
+<td>値をコピー</td>
+<td>int、double</td>
+</tr>
+<tr>
+<td><strong>参照渡し</strong></td>
+<td>参照型による値の代入</td>
+<td>参照情報（メモリ上の住所）をコピー</td>
+<td>String、オブジェクト</td>
+</tr>
+</tbody>
+</table>
+<p>値渡しは、<strong>渡した先の変数を変更しても、元の変数に影響はない</strong></p>
+<p>参照渡しは、<strong>代入先で値を編集すると、代入元の値も変わる</strong></p>
+<p><strong>イミュータブル</strong>：「不変」「変更不可能」を意味すし、作成後に状態や値を変更できないデータやオブジェクトを指す</p>
+<h4 id="null">null</h4>
+<p>nullは、<strong>参照型変数に代入できる値</strong>をいい、その変数に参照先がないことを表す。</p>
+<ul>
+<li>基本型には入らない。</li>
+<li>参照値がなくなる。</li>
+</ul>
+<p>Javaは、オブジェクトがどの変数からも扱われなくなった場合、ガベージコレクションにより、オブジェクトが破壊される</p>
+<pre><code class="language-java"><span class="hljs-comment">// 手動で解放</span>
+変数名 = <span class="hljs-literal">null</span>;
+</code></pre>
+<h3 id="継承">継承</h3>
+<h5 id="is-aの関係">is-aの関係</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>○</td>
+<td>あなたは人間です</td>
+</tr>
+<tr>
+<td>×</td>
+<td>人間はあなたです</td>
+</tr>
+</tbody>
+</table>
+<p>※ is-aの関係であるとき、<code>あなた</code>は<code>人間</code>を<strong>継承</strong>できる。</p>
+<h4 id="extends">extends</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>スーパークラス</strong>（親クラス）</td>
+<td>継承元のクラス</td>
+</tr>
+<tr>
+<td><strong>サブクラス</strong>（子クラス）</td>
+<td>継承先のクラス</td>
+</tr>
+</tbody>
+</table>
+<p>Javaでは継承する際には、<strong>extends</strong>（拡張する）という</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> サブクラス extends スーパークラス {
+}
+</code></pre>
+<ul>
+<li>利点</li>
+</ul>
+<ol>
+<li>コピペを減らせる</li>
+<li>同じグループとして扱える</li>
+</ol>
+<pre><code class="language-java">スーパークラス 変数 = <span class="hljs-keyword">new</span> サブクラス();
+
+<span class="hljs-comment">// スーパークラスの型としてサブクラスを宣言したり、Listにスーパークラス、サブクラスを混ぜた状態で扱える</span>
+</code></pre>
+<p><strong>スーパークラスで定義されたメンバは、サブクラスでは定義しなくても扱える。</strong></p>
+<h4 id="コンストラクタの継承">コンストラクタの継承</h4>
+<p>サブクラスのオブジェクトを生成すると、<strong>親→子</strong>の順でコンストラクタが動く</p>
+<pre><code class="language-java">
+<span class="hljs-comment">// スーパークラスの引数なしコンストラクタを呼び出す</span>
+<span class="hljs-keyword">public</span> サブクラス {
+    処理;
+}
+
+<span class="hljs-comment">// 明示的に、スーパークラスの引数なしコンストラクタを呼び出す</span>
+<span class="hljs-keyword">public</span> サブクラス {
+    <span class="hljs-built_in">super</span>();
+    処理;
+}
+
+<span class="hljs-comment">// スーパークラスの引数ありコンストラクタを呼び出す</span>
+<span class="hljs-keyword">public</span> サブクラス {
+    <span class="hljs-built_in">super</span>(引数リスト);
+    処理;
+}
+</code></pre>
+<h5 id="thisとsuperの違い">this()とsuper()の違い</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>this()</code></strong></td>
+<td>そのクラスの別のコンストラクタを呼び出す</td>
+</tr>
+<tr>
+<td><strong><code>super()</code></strong></td>
+<td>そのクラスのスーパークラスのコンストラクタを呼び出す</td>
+</tr>
+</tbody>
+</table>
+<p><strong>どちらか片方のみ</strong>、コンストラクタの先頭行に記述できる。</p>
+<hr>
+<h1 id="4月23日">4月23日</h1>
+<h2 id="やったこと-11">やったこと</h2>
+<ul>
+<li>protected修飾子</li>
+<li>オーバーライド</li>
+<li>アノテーション</li>
+<li>オブジェクトクラス</li>
+<li>正規表現</li>
+<li>抽象クラス・抽象メソッド</li>
+</ul>
+<h2 id="学んだこと-5">学んだこと</h2>
+<h3 id="protected修飾子">protected修飾子</h3>
+<p><strong>スーパークラスのprivateメンバには、サブクラスからもアクセスできない。</strong></p>
+<p>サブクラスからスーパークラスのメンバにアクセスしたい場合は、<strong><code>protected</code>修飾子</strong>を指定する。</p>
+<pre><code class="language-java"><span class="hljs-comment">// スーパークラス</span>
+<span class="hljs-keyword">public</span> class スーパークラス名 {
+    <span class="hljs-keyword">protected</span> data;
+}
+
+<span class="hljs-comment">// サブクラス</span>
+<span class="hljs-keyword">public</span> class サブクラス名 {
+    a = data; <span class="hljs-comment">// 変数名だけでアクセスできる</span>
+}
+</code></pre>
+<h5 id="修飾子一覧">修飾子一覧</h5>
+<table>
+<thead>
+<tr>
+<th>修飾子名</th>
+<th>アクセスを許可する範囲</th>
+<th>記述できる場所</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private</code></td>
+<td>同一クラスのみ</td>
+<td>フィールド、メソッド、コンストラクタ</td>
+</tr>
+<tr>
+<td>記述なし</td>
+<td>同一パッケージのみ</td>
+<td>フィールド、メソッド、コンストラクタ、クラス</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>同一パッケージ内のクラス、または自身を継承したクラス（パッケージが異なる場合でもアクセス可能）</td>
+<td>フィールド、メソッド、コンストラクタ</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>すべてのクラス</td>
+<td>フィールド、メソッド、コンストラクタ、クラス</td>
+</tr>
+</tbody>
+</table>
+<h4 id="注意">注意</h4>
+<p><strong>スーパークラスと同じ名前の変数をサブクラスで宣言してはいけない</strong><br>
+変数隠しといい、コンパイルエラーはでないが正しく動作しない</p>
+<h3 id="オーバーライド">オーバーライド</h3>
+<p><strong>スーパークラスで定義されたメソッドと同じ名前（シグネチャ）のメソッドをサブクラスで再定義することです。</strong></p>
+<p>シグネチャとは、メソッド名・引数の型・個数・順番の組み合わせを指す言葉。</p>
+<p>つまり、サブクラス内では、スーパークラスで定義されたメソッドと<strong>同じメソッド名、引数の型、個数、順番であるメソッドを定義できる</strong>。</p>
+<h4 id="オーバーライドが出来ない場合">オーバーライドが出来ない場合</h4>
+<ol>
+<li>メソッドに<code>final</code>を指定している場合</li>
+<li>staticメソッド</li>
+</ol>
+<h4 id="アノテーション">アノテーション</h4>
+<pre><code class="language-java"><span class="hljs-meta">@Override</span> <span class="hljs-comment">// 親クラスのメソッドを上書きしていることをコンパイラに宣言し、記述ミスを防ぐための目印。</span>
+</code></pre>
+<p><strong>様々な機能を付け加えることができる。</strong><br>
+コンパイラやフレームワークに対し、コードの役割や指示といった「補足情報」を伝えるためのタグ。</p>
+<h3 id="継承のメリット">継承のメリット</h3>
+<p><strong>継承をするとスーパークラスのグループとして扱える。</strong></p>
+<p>親クラスの変数に子クラスを代入することができる。</p>
+<pre><code class="language-java"><span class="hljs-comment">// スーパークラス</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Phone</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> {
+        System.out.println(<span class="hljs-string">&quot;これは携帯電話です。&quot;</span>);
+    }
+}
+
+<span class="hljs-comment">// サブクラス</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SmartPhone</span> {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> {
+        System.out.println(<span class="hljs-string">&quot;これはスマートフォンです。&quot;</span>);
+    }
+}
+</code></pre>
+<pre><code class="language-java"><span class="hljs-comment">// 実行クラス</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> {
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> {
+        <span class="hljs-type">Phone</span> <span class="hljs-variable">p</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Phone</span>();
+        <span class="hljs-type">SmartPhone</span> <span class="hljs-variable">sp</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SmartPhone</span>();
+
+        Phone[] phones = {p,sp}; <span class="hljs-comment">// スーパークラスの配列にサブクラスをいれることができる</span>
+
+        <span class="hljs-keyword">for</span> (Phone phone : phones) { <span class="hljs-comment">// スーパークラスにサブクラスを代入することができる</span>
+            phone.show(); <span class="hljs-comment">// 同じメソッド名だが、代入したオブジェクトによって動作が変わる</span>
+        }
+    }
+}
+</code></pre>
+<h3 id="オブジェクトクラスの継承">オブジェクトクラスの継承</h3>
+<p>すべてのクラスは、<code>extends</code>を記述していなくても、<strong>オブジェクトクラス</strong>を継承している。<br>
+オブジェクトクラスにも、いくつかのメンバが定義されている。</p>
+<h5 id="objectクラスの代表的なメソッド">Objectクラスの代表的なメソッド</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>String toString()</code></strong></td>
+<td>数値型などをString型に変換するメソッド</td>
+</tr>
+<tr>
+<td><code>boolean equals(Object obj)</code></td>
+<td>2つの変数が同じオブジェクトを参照しているかを判定するメソッド</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>
+<p><code>toString()</code><br>
+<code>toString()</code>メソッドの代表的な利用場所は、<code>println()</code>、<code>print()</code>などの標準出力処理</p>
+<pre><code class="language-java">System.out.println(<span class="hljs-number">12</span>); <span class="hljs-comment">// 「12」という文字列が出力される</span>
+</code></pre>
+</li>
+<li>
+<p><code>equals()</code><br>
+文字列の比較するときは、<code>equals()</code>メソッドを使用する<br>
+String型は参照値を持っているため、<code>==</code>では比較できない</p>
+</li>
+</ol>
+<h3 id="正規表現">正規表現</h3>
+<p>正規表現は、さまざまな文字列のパターンを1つの形式でまとめて表現するときに用いる。</p>
+<pre><code class="language-java"><span class="hljs-comment">// 正規表現で、「123-1234」のような郵便番号を検索したい場合</span>
+(<span class="hljs-string">&quot;^[0-9]{3}-[0-9]{4}$&quot;</span>);
+</code></pre>
+<h5 id="正規表現の記号抜粋">正規表現の記号（抜粋）</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">記号</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>.</code></td>
+<td style="text-align:left">任意の1文字。改行文字は除く</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>*</code></td>
+<td style="text-align:left">直前の1文字の0回以上の繰り返しと一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>^</code></td>
+<td style="text-align:left">行の先頭</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>$</code></td>
+<td style="text-align:left">行の末尾</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[]</code></td>
+<td style="text-align:left">かっこ内の任意の1文字と一致。「-」で範囲指定可能</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[^]</code></td>
+<td style="text-align:left">かっこ内の任意の1文字と不一致。「-」で範囲指定可能</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>+</code></td>
+<td style="text-align:left">直前の文字の1個以上の繰り返しと一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>?</code></td>
+<td style="text-align:left">直前の文字が0個または1個の場合に一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>{}</code></td>
+<td style="text-align:left">かっこ内の数値の繰り返しと一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>|</code></td>
+<td style="text-align:left">直前、直後どちらかのパターンに一致</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>()</code></td>
+<td style="text-align:left">かっこ内をグループ化。マッチした内容は参照可</td>
+</tr>
+</tbody>
+</table>
+<h3 id="抽象クラスと抽象メソッド">抽象クラスと抽象メソッド</h3>
+<ul>
+<li>不要なクラスを生成させたくない</li>
+<li>オーバーライドを強制させたい</li>
+</ul>
+<p>上記2点を解決するために、<strong>抽象クラス</strong>と<strong>抽象メソッド</strong>がある。</p>
+<p><code>abstract</code>という修飾子をつける</p>
+<pre><code class="language-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> class クラス名 {
+    <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> メソッド名(); <span class="hljs-comment">// 抽象メソッドは{}を記述できない</span>
+
+    <span class="hljs-comment">// 具象メソッドも書くことができる</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> メソッド名() {
+        処理;
+    }
+}
+</code></pre>
+<p><strong>抽象クラス</strong>はオブジェクト生成ができない。<br>
+※ 具体的な処理が書かれていないため</p>
+<p><strong>抽象クラスを継承したクラスの中で、抽象メソッドの内容をそれぞれ記述し、オブジェクト生成をする。</strong><br>
+そのため、オーバーライドを必ず行う必要がある。</p>
+<h4 id="abstractの特徴">abstractの特徴</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>abstract</code>のついたクラスは <strong><code>new</code>することはできない</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>abstract</code>がついたクラスは <strong><code>abstract</code>のついたメソッドを最低一つは持つ</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>abstract</code>がついたクラスは <strong><code>extends</code>して使われる</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>abstract</code>がついたクラスは<strong>通常のフィールドやメソッドも定義できる</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>abstract</code>がついたメソッドは<strong>オーバーライドされることを強制できる</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>オーバーライドが完了した<strong>子クラスは<code>new</code>できる</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="4月24日">4月24日</h1>
+<h2 id="やったこと-12">やったこと</h2>
+<ul>
+<li>インターフェイス</li>
+<li>オブジェクト指向の三大要素</li>
+<li>パッケージ</li>
+<li>インポート</li>
+<li>例外と例外処理</li>
+</ul>
+<h2 id="学んだこと-6">学んだこと</h2>
+<h3 id="インターフェイス">インターフェイス</h3>
+<p>オブジェクトを利用する側に公開すべき操作（メソッド）などをまとめたプログラムのことを<strong>インターフェイス</strong>という。</p>
+<p><code>interface</code>という修飾子を付ける</p>
+<pre><code class="language-java">修飾子 interface インターフェイス名 {
+    型名 フィールド名 = 式; <span class="hljs-comment">// フィールドは必ず初期化する。</span>
+}
+<span class="hljs-comment">// （変えることのできない定数のみが宣言可能）</span>
+<span class="hljs-comment">// 定数にする変数名は、すべて大文字で表す。</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>フィールドは、<code>public static final</code>がついた定数のみ宣言が可能</strong><br/>（修飾子は省略が可能で、省略した場合暗黙的に<code>public static final</code>を付与する）</td>
+</tr>
+<tr>
+<td>インターフェイスのメソッドは<strong>抽象メソッド</strong>、<strong>デフォルトメソッド</strong>、<strong>staticメソッド</strong>の3種類を定義できる（Java SE8から）<br/>（Java SE7までは、抽象メソッドのみ）</td>
+</tr>
+<tr>
+<td><strong>インターフェイスからはオブジェクトを生成できない</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="実装クラスの定義">実装クラスの定義</h4>
+<p>実装クラスを定義するには、<code>implements</code>を使用する</p>
+<pre><code class="language-java">修飾子 class クラス名 implements インターフェイス名<span class="hljs-number">1</span>, インターフェイス名<span class="hljs-number">2</span> {
+    処理
+}
+</code></pre>
+<h5 id="インターフェイスの命名">インターフェイスの命名</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>名前の先頭に<code>I</code>を付ける</td>
+<td><code>IAminal</code></td>
+</tr>
+<tr>
+<td><code>able</code>が語尾につく</td>
+<td><code>workable</code>、<code>cuttable</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="継承とインターフェイスの違い">継承とインターフェイスの違い</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>implements</code></td>
+<td><strong>後ろに1つ以上のインターフェイスを複数指定できる</strong>（多重継承）</td>
+</tr>
+<tr>
+<td><code>extends</code></td>
+<td><strong>2つ以上のスーパークラスを継承できない</strong></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java"><span class="hljs-comment">// 【同じ種別】</span>
+<span class="hljs-comment">// クラス ← クラス</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">B</span>
+<span class="hljs-comment">// インターフェイス ← インターフェイス</span>
+<span class="hljs-keyword">interface</span> <span class="hljs-title class_">A</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">B</span>
+
+<span class="hljs-comment">// 【違う種別】</span>
+<span class="hljs-comment">// クラス ← インターフェイス</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">B</span>
+</code></pre>
+<h5 id="抽象クラスとインターフェイス">抽象クラスとインターフェイス</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">項目</th>
+<th style="text-align:left">抽象クラス</th>
+<th style="text-align:left">インターフェース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>アクセス修飾子</strong></td>
+<td style="text-align:left"><code>public</code>（指定しない場合はパッケージプライベート）</td>
+<td style="text-align:left"><code>public</code>（指定しない場合は <code>public</code>）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>フィールドの定義</strong></td>
+<td style="text-align:left">定義できる</td>
+<td style="text-align:left">定数（<code>public static final</code>）のみ定義できる</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>継承</strong></td>
+<td style="text-align:left">多重継承できない</td>
+<td style="text-align:left">多重継承できる</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>メソッドの定義</strong></td>
+<td style="text-align:left">具体的な処理（具象メソッド）も記述できる</td>
+<td style="text-align:left">Java SE7までは抽象メソッドのみ。Java SE8からは <code>default</code> メソッドや <code>static</code> メソッドも記述可能</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>メソッドのアクセス修飾子</strong></td>
+<td style="text-align:left">抽象メソッド：<code>private</code> 以外<br>具象メソッド：制限なし</td>
+<td style="text-align:left">抽象メソッド：<code>public</code>（指定しない場合は <code>public</code>）<br>具象メソッド：<code>public</code>、Java SE9からは <code>private</code> も可能</td>
+</tr>
+</tbody>
+</table>
+<h3 id="オブジェクト指向の三大要素">オブジェクト指向の三大要素</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>カプセル化</strong></td>
+<td><strong>継承</strong></td>
+<td><strong>ポリモーフィズム</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="カプセル化-1">カプセル化</h4>
+<p>カプセル化とは、フィールドとメソッドを1つのクラスにまとめ、保護したいメンバに<code>private</code>を付けることで外からのアクセスを制限する仕組みのこと。</p>
+<p>保守性の向上やバグに強いプログラムの作成に繋がる。</p>
+<h5 id="アクセス修飾子-2">アクセス修飾子</h5>
+<table>
+<thead>
+<tr>
+<th>修飾子名</th>
+<th>アクセスを許可する範囲</th>
+<th>記述できる場所</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private</code></td>
+<td>同一クラスのみ</td>
+<td>フィールド、メソッド、コンストラクタ</td>
+</tr>
+<tr>
+<td>記述なし</td>
+<td>同一パッケージのみ</td>
+<td>フィールド、メソッド、コンストラクタ、クラス</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>同一パッケージ内のクラス、または自身を継承したクラス（パッケージが異なる場合でもアクセス可能）</td>
+<td>フィールド、メソッド、コンストラクタ</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>すべてのクラス</td>
+<td>フィールド、メソッド、コンストラクタ、クラス</td>
+</tr>
+</tbody>
+</table>
+<h4 id="継承-1">継承</h4>
+<p>継承とは「あるクラスのメンバを他のクラスに引き継がせる」仕組みのこと。</p>
+<p>継承を用いることで、<strong>プログラムの再利用性を高め、保守・修正を容易にする</strong>ことができる。</p>
+<h4 id="ポリモーフィズム多態性">ポリモーフィズム（多態性）</h4>
+<p>ポリモーフィズムとは、<strong>同じ名前のメソッドでも、オブジェクトに応じて異なる振る舞いを持たせることのできる仕組み</strong>のこと。</p>
+<p>ポリモーフィズムを実現する仕組みとして、<strong>オーバーライド</strong>がある。</p>
+<h3 id="パッケージ">パッケージ</h3>
+<p>パッケージとは、<strong>クラスをまとめて分類するための仕組み</strong>で、クラスを機能や役割別に分類することでクラスを管理しやすくする。</p>
+<p>すべてのクラスは必ずパッケージに属さなければいけない。パッケージを指定しない場合は、<strong>デフォルトパッケージ</strong>というパッケージに暗黙的に属することになる。</p>
+<p><strong>パッケージが異なれば、1つのシステム内に同名のクラスを複数作成することができる</strong>。</p>
+<p>パッケージのようにクラス名などの識別子を重複させないための仕組みを「<strong>名前空間</strong>」と呼ぶ。</p>
+<h4 id="異なるパッケージ内のクラスへのアクセス">異なるパッケージ内のクラスへのアクセス</h4>
+<ol>
+<li>アクセスされるクラスのアクセス修飾子を<code>public</code>にする</li>
+<li>パッケージ名を含めたクラス名（完全修飾子）を指定する</li>
+</ol>
+<h3 id="インポート">インポート</h3>
+<p>異なるパッケージ内のクラスにアクセスするたびに、完全修飾名を記述するのは不便です。</p>
+<p>そこで、<strong><code>import</code>文</strong>を記述することで、クラス名だけでアクセスできるようになる。</p>
+<pre><code class="language-java"><span class="hljs-keyword">import</span> パッケージ名.クラス名;
+</code></pre>
+<p>ただし、<code>java.lang</code>パッケージのクラスは、利用する機会が多いため、例外的にインポートしなくてもクラスにアクセスすることができる。<br>
+主なクラスは、<code>Integer</code>、<code>String</code></p>
+<h3 id="例外と例外処理">例外と例外処理</h3>
+<p>javaの場合、<strong>例外とエラーは厳密には別物</strong>。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>例外</strong></td>
+<td>プログラムの処理で対処できる</td>
+</tr>
+<tr>
+<td><strong>エラー</strong></td>
+<td>プログラム実行中にJVMでは対処できない異常事態</td>
+</tr>
+</tbody>
+</table>
+<h5 id="例外処理">例外処理</h5>
+<table>
+<thead>
+<tr>
+<th>例外</th>
+<th>処理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>致命的なエラー</td>
+<td>システムを落とす</td>
+</tr>
+<tr>
+<td>アプリ上のエラー</td>
+<td>別の画面に飛ばして、システムを継続する</td>
+</tr>
+<tr>
+<td>ロジックエラー</td>
+<td>場合によっては無視する</td>
+</tr>
+</tbody>
+</table>
+<h4 id="チェック例外と非チェック例外">チェック例外と非チェック例外</h4>
+<p>例外は、大きく分けて「<strong>チェック例外</strong>」と「<strong>非チェック例外</strong>」の2種類に分類される。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>チェック例外</strong></td>
+<td>コンパイラが発生を予測できる例外<br/>エンジニアが処理をしないかぎり実行できない</td>
+<td>標準入力で入力処理に失敗した<br/>通信先の相手が応答しない</td>
+</tr>
+<tr>
+<td><strong>非チェック例外</strong></td>
+<td>コンパイラが発見できない例外<br/>プログラムを実行してから起きる</td>
+<td>存在しない配列要素へのアクセス<br/>null状態変数へのオブジェクト参照</td>
+</tr>
+</tbody>
+</table>
+<h4 id="例外クラス">例外クラス</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>致命的なエラー</td>
+<td><code>Error</code>クラス</td>
+</tr>
+<tr>
+<td>チェック例外</td>
+<td><code>Exception</code>クラス</td>
+</tr>
+<tr>
+<td>非チェック例外</td>
+<td><code>RuntimeException</code>クラス</td>
+</tr>
+</tbody>
+</table>
+<h5 id="error-クラスのサブクラス非チェック例外例外処理は不要">Error クラスのサブクラス→非チェック例外（<strong>例外処理は不要</strong>）</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">クラス名</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>VirtualMachineError</code></td>
+<td style="text-align:left">JVMの異常</td>
+<td style="text-align:left">Java仮想マシンが壊れている、または動作を継続するのに必要なリソースが足りなくなったなどのJVMの異常時に発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>OutOfMemoryError</code></td>
+<td style="text-align:left">メモリ不足によるエラー</td>
+<td style="text-align:left">ガーベッジコレクションが稼働しても、使用可能なメモリをこれ以上確保できないメモリ不足時に発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>StackOverflowError</code></strong></td>
+<td style="text-align:left">不十分なJavaスタックによるエラー</td>
+<td style="text-align:left">アプリケーションの再帰の回数が多すぎる場合に発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>NoClassDefFoundError</code></td>
+<td style="text-align:left">クラスパスの問題によるエラー</td>
+<td style="text-align:left">読み込もうとしたクラスファイルが見つからない場合に発生します。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>StackOverflowError</code>
+<ul>
+<li>無限ループなど</li>
+</ul>
+</li>
+</ul>
+<h5 id="runtimeexception-クラスのサブクラス非チェック例外例外処理は必須ではない">RuntimeException クラスのサブクラス→非チェック例外（<strong>例外処理は必須ではない</strong>）</h5>
+<p>RuntimeException クラスのサブクラスは、例外処理を行うことは可能ですが推奨されていません。<br>
+なぜなら、RuntimeException クラスのサブクラスは、プログラマー自身が注意してコーディングすることで発生を防ぐことのできる例外クラスだからです。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">クラス名</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>ClassCastException</code></td>
+<td style="text-align:left">キャストの失敗</td>
+<td style="text-align:left">参照変数において誤ったキャストを行ったときに発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>IllegalArgumentException</code></strong></td>
+<td style="text-align:left">不正な引数</td>
+<td style="text-align:left">不正な引数、または不適切な引数をメソッドに渡したときに発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>NumberFormatException</code></strong></td>
+<td style="text-align:left">数値形式文字列の書き誤り</td>
+<td style="text-align:left">整数を表さない文字列を整数に変換しようとしたときに発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>IllegalStateException</code></td>
+<td style="text-align:left">不正な状態での呼び出し</td>
+<td style="text-align:left">不適切な状態でメソッドを呼び出したときに発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>IndexOutOfBoundsException</code></strong></td>
+<td style="text-align:left">不正な状態での呼び出し</td>
+<td style="text-align:left">Listや文字列の操作で<strong>範囲を超えてアクセスしたときに発生</strong>します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ArrayIndexOutOfBoundsException</code></td>
+<td style="text-align:left">配列の要素番号の範囲外指定</td>
+<td style="text-align:left"><strong>不正なインデックスで配列の要素にアクセスしようとしたときに発生</strong>します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>NullPointerException</code></strong></td>
+<td style="text-align:left">使ったオブジェクトがnull</td>
+<td style="text-align:left">nullが代入されている参照変数に対して、メソッドを呼び出したときに発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>ArithmeticException</code></td>
+<td style="text-align:left">算術エラー</td>
+<td style="text-align:left">変数をゼロで除算したときに発生します。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>NumberFormatException
+<ul>
+<li>Integer.parseInt()ででる</li>
+<li>intに直せない引数を入れたとき</li>
+</ul>
+</li>
+<li>NullPointerException
+<ul>
+<li>中身がnullのオブジェクトの<strong>メソッド</strong>を呼び出したとき</li>
+</ul>
+</li>
+</ul>
+<h5 id="runtimeexception-クラス以外の-exception-のサブクラスチェック例外例外処理は必須">RuntimeException クラス以外の Exception のサブクラス→チェック例外（<strong>例外処理は必須</strong>）</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">クラス名</th>
+<th style="text-align:left">意味</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong><code>IOException</code></strong></td>
+<td style="text-align:left">入出力処理の失敗</td>
+<td style="text-align:left">入出力に関係した処理を行う場合に発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>FileNotFoundException</code></td>
+<td style="text-align:left">ファイル関係の例外</td>
+<td style="text-align:left">ファイルの入出力で、目的のファイルがなかったときや、ファイルやフォルダに対して不適切な操作を実行しようとしたときに発生します。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>ClassNotFoundException</code></strong></td>
+<td style="text-align:left">クラス定義やメソッドの呼び出し関係の問題</td>
+<td style="text-align:left">クラス名を表す文字列を引数に使用して、クラスを読み込もうとしたものの、そのクラスファイルが見つからない場合に発生します。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SQLException
+<ul>
+<li>SQL実行時のエラー</li>
+</ul>
+</li>
+</ul>
+<h3 id="例外処理-1">例外処理</h3>
+<h4 id="try-catch-finally文">try-catch-finally文</h4>
+<pre><code class="language-java"><span class="hljs-keyword">try</span> { 
+    例外が発生する可能性のある処理
+} <span class="hljs-keyword">catch</span> (例外クラス名 変数名){ 
+    例外発生時の処理 
+} <span class="hljs-keyword">finally</span> { 
+    例外の有無にかかわらず行う処理
+    <span class="hljs-comment">// 主にcloseメソッドが書かれる</span>
+        <span class="hljs-comment">// 読み取りなどを止める</span>
+} 
+</code></pre>
+<h5 id="構文-try-catch-finally文">構文 try-catch-finally文</h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>tryブロック</strong></td>
+<td>例外が発生しそうな箇所をtryブロックで囲む。</td>
+</tr>
+<tr>
+<td><strong>catchブロック</strong></td>
+<td>例外が発生した時の処理をcatchブロックの中に定義する。</td>
+</tr>
+<tr>
+<td><strong>finallyブロック</strong></td>
+<td>例外の有無にかかわらず必ず実行したい処理をfinally ブロックに定義する。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>例外が発生するメソッド内で記述するのが原則</strong></p>
+<h4 id="throws文">throws文</h4>
+<p>try-catchを後回し（メソッドの呼び出し）</p>
+<p><strong>try-catchはどこか1箇所でまとめて書いておいて、throws文で呼び出す。</strong></p>
+<pre><code>throws 例外クラス名{
+    処理
+}
+</code></pre>
+<hr>
+<h1 id="4月27日">4月27日</h1>
+<h2 id="やったこと-13">やったこと</h2>
+<ul>
+<li>throws文</li>
+<li>コレクションフレームワーク</li>
+<li>ArrayList</li>
+</ul>
+<h2 id="学んだこと-7">学んだこと</h2>
+<h3 id="throws文-1">throws文</h3>
+<p>例外が発生する可能性のあるメソッドには、呼び出し元へその例外の情報を渡すことを明示する必要がある。<br>
+その内容は<code>throws</code>文を使用して記述する。</p>
+<h5 id="throws宣言">throws宣言</h5>
+<pre><code class="language-java">修飾子 戻り値の型 メソッド名(引数リスト) <span class="hljs-keyword">throws</span> 例外クラス名 {
+ 
+}
+</code></pre>
+<h3 id="throw文">throw文</h3>
+<p>意図的に例外を発生させる<code>throw</code>文を使う。</p>
+<p><strong>チェック例外</strong>を投げる場合は、<code>throw</code>文に加えて<code>throws</code>宣言を記述する必要がある。</p>
+<p><strong>非チェック例外</strong>の場合は、<code>throws</code>宣言は不要。</p>
+<pre><code class="language-java"><span class="hljs-keyword">throw</span> 例外クラスのオブジェクト
+</code></pre>
+<h5 id="チェック例外と非チェック例外-1">チェック例外と非チェック例外</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特徴</th>
+<th style="text-align:left">チェック例外 (Exceptionなど)</th>
+<th style="text-align:left">非チェック例外 (RuntimeExceptionなど)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>コンパイラのチェック</strong></td>
+<td style="text-align:left">あり（必須）</td>
+<td style="text-align:left">なし（任意）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>必要な記述</strong></td>
+<td style="text-align:left">try-catch または throws 宣言</td>
+<td style="text-align:left">特になし（記述してもよい）</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>主な用途</strong></td>
+<td style="text-align:left">外部要因によるエラー（ファイル、ネットワーク等）</td>
+<td style="text-align:left">プログラミングのミス（論理エラー等）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="コレクションフレームワーク">コレクションフレームワーク</h3>
+<p>配列は、作成した時点で要素数が固定される。そのため、状況に応じて柔軟に要素数を変更したい処理に配列の利用は適していない。そのようなときのために、Java では配列よりも柔軟に複数のデータを扱うためのクラスが複数提供されいる。このクラスのことを総称して<strong>コレクションフレームワーク</strong>という。</p>
+<h5 id="代表的なコレクションフレームワーク">代表的なコレクションフレームワーク</h5>
+<table>
+<thead>
+<tr>
+<th>インターフェイス</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>java.util.List</code></strong></td>
+<td><strong>順序通りに並んだ要素の集まりを管理するデータ構造</strong></td>
+</tr>
+<tr>
+<td><code>java.util.Map</code></td>
+<td><strong>キー</strong>と<strong>値</strong>を関連付けたものを１つの要素として管理するデータ構造</td>
+</tr>
+</tbody>
+</table>
+<h5 id="代表的なコレクションフレームワーク実装クラス">代表的なコレクションフレームワーク（実装クラス）</h5>
+<table>
+<thead>
+<tr>
+<th>実装元のインターフェイス</th>
+<th>実装クラス</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>java.util.List</code></td>
+<td><strong><code>java.util.ArrayList</code></strong></td>
+<td>配列と同様に<strong>0開始の連番</strong>で要素を管理する。</td>
+</tr>
+<tr>
+<td><code>java.util.Map</code></td>
+<td><strong><code>java.util.HashMap</code></strong></td>
+<td>キーと値のペアを1つの要素として管理する。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="arraylist">ArrayList</h3>
+<p>要素数を状況に応じて柔軟に増減させることができる。（<strong>可変長</strong>）</p>
+<pre><code class="language-java">List&lt;型名&gt; 変数名 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>&lt;&gt;</code></strong></td>
+<td><strong>ジェネリクス</strong></td>
+<td><strong>参照型しか記述できない</strong></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java"><span class="hljs-comment">// ジェネリクスには参照型しか記述できない</span>
+List&lt;Integer&gt; list = ... <span class="hljs-comment">// intの代わりにInteger</span>
+</code></pre>
+<h5 id="ラッパークラスの基本型">ラッパークラスの基本型</h5>
+<table>
+<thead>
+<tr>
+<th>ラッパークラス</th>
+<th>扱っている基本型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Byte</code></td>
+<td><code>byte</code></td>
+</tr>
+<tr>
+<td><code>Character</code></td>
+<td><code>char</code></td>
+</tr>
+<tr>
+<td><code>Short</code></td>
+<td><code>short</code></td>
+</tr>
+<tr>
+<td><code>Integer</code></td>
+<td><code>int</code></td>
+</tr>
+<tr>
+<td><code>Long</code></td>
+<td><code>long</code></td>
+</tr>
+<tr>
+<td><code>Float</code></td>
+<td><code>float</code></td>
+</tr>
+<tr>
+<td><code>Double</code></td>
+<td><code>double</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="arraylistの使い方">ArrayListの使い方</h5>
+<pre><code class="language-java">List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();
+
+<span class="hljs-comment">// add()で</span>
+list.add(<span class="hljs-number">1</span>); <span class="hljs-comment">// 1番目</span>
+list.add(<span class="hljs-number">3</span>); <span class="hljs-comment">// 2番目</span>
+list.add(<span class="hljs-number">5</span>); <span class="hljs-comment">// 3番目</span>
+
+<span class="hljs-comment">// get(要素番号)で取得する</span>
+<span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> list.get(<span class="hljs-number">0</span>); <span class="hljs-comment">// 1番目を取得</span>
+
+<span class="hljs-comment">// 要素数をを所得</span>
+list.size()
+
+<span class="hljs-comment">// 要素の中身を削除する</span>
+list.remove(<span class="hljs-number">1</span>); <span class="hljs-comment">// {1, 3, 5} → {1, 5} 前の要素に詰める</span>
+</code></pre>
+<h3 id="hashmap">HashMap</h3>
+<p><strong>HashMapは「キー」と「値」のペアを 1 つの要素として管理し、キーを使用して特定の要素に参照できる仕組み</strong></p>
+<h5 id="マップの生成">マップの生成</h5>
+<pre><code class="language-java">Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;(); <span class="hljs-comment">// 型を2つ決める</span>
+</code></pre>
+<hr>
+<h1 id="4月30日">4月30日</h1>
+<h2 id="やったこと-14">やったこと</h2>
+<ul>
+<li>アルゴリズム</li>
+</ul>
+<h2 id="学んだこと-8">学んだこと</h2>
+<h3 id="整列アルゴリズム">整列アルゴリズム</h3>
+<p>整列アルゴリズムは、データを昇順、降順に並び替えるアルゴリズムのこと。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>昇順</td>
+<td><strong>ASC</strong></td>
+</tr>
+<tr>
+<td>降順</td>
+<td><strong>DESC</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>交換法</strong></td>
+<td><strong>隣り合ったデータの交換</strong>を繰り返す</td>
+</tr>
+<tr>
+<td><strong>選択法</strong></td>
+<td><strong>一番小さいデータを選択して、先頭に持っていく</strong>ことを繰り返す</td>
+</tr>
+<tr>
+<td><strong>挿入法</strong></td>
+<td><strong>一つずつ順番に、正しい位置に挿入する</strong>ことを繰り返す</td>
+</tr>
+</tbody>
+</table>
+<p>選択法</p>
+<ol>
+<li>配列のi~最後までから最小値を探す</li>
+<li>最小値とi番目の位置を交換する</li>
+<li>iを一つ増やす</li>
+<li>これを配列の要素数回繰り返す</li>
+</ol>
+<h1 id="5月1日">5月1日</h1>
+<h2 id="やったこと-15">やったこと</h2>
+<ul>
+<li>線形探索</li>
+<li>2分探索</li>
+</ul>
+<h2 id="学んだこと-9">学んだこと</h2>
+<h3 id="線形探索">線形探索</h3>
+<p>終了条件</p>
+<ul>
+<li>配列の要素分繰り返す</li>
+<li>配列の要素と探索データが一致する</li>
+</ul>
+<h4 id="線形探索番兵法">線形探索（番兵法）</h4>
+<div class="box">
+<p>配列の一番後ろに、探索データと同じ値のボールが入った箱をあらかじめセットすることを<strong>番兵法</strong>という</p>
+<p>配列の大きさを取得することが難しいときに使用する（C言語など）</p>
+<p>また、番兵法を用いると終了条件を減らすことができる。</p>
+<ul>
+<li>配列の要素分繰り返す</li>
+<li>配列の要素と探索データが一致する<br>
+↓↓↓</li>
+<li>配列の要素と探索データが一致する</li>
+</ul>
+</div>
+<h3 id="2分探索">2分探索</h3>
+<p>あらかじめ、昇順または降順に並んでいる配列でしかできない</p>
+<hr>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
