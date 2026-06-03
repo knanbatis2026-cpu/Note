@@ -137,9 +137,21 @@
 
 </style>
         <style>
+:root {
+    --bg-color: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --accent-color: #3b82f6;
+    --accent-soft: #eff6ff;
+    --border-color: #e2e8f0;
+    --code-bg: #1e1e1e;
+    --header-height: 60px;
+}
+
 /* 手書きノート風スタイル */
 body {
-    font-family: 'Erac ITC', 'Comic Sans MS', cursive, sans-serif !important;
+    font-family: 'MeiryoUI' !important;
     background-color: #fffaf0 !important;
     /* ノート用紙の背景色 */
     background-image:
@@ -155,6 +167,13 @@ body {
 body {
     padding: 50px 40px !important;
 }
+.content-card {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
 
 /* 画面幅が広い場合（例：1024px以上をフルスクリーンとみなす場合） */
 @media screen and (min-width: 1024px) {
@@ -163,9 +182,12 @@ body {
     }
 }
 
-/* strong {
-    background: linear-gradient(transparent 20%, #ccffcc 60%);
-} */
+p strong {
+    color: var(--accent-color);
+    background: var(--accent-soft);
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+}
 
 h1,
 h2,
@@ -187,7 +209,7 @@ code {
     color: #d1242f !important;
     padding: 2px 4px !important;
     border-radius: 4px !important;
-    font-family: 'Courier New', Courier, monospace !important;
+    font-family: 'Courier New', Courier, 'Firple', monospace !important;
     width: calc(100% - 8px) !important;
 }
 
@@ -229,15 +251,70 @@ hr {
     margin: 30px 0 !important;
 }
 
-.box{
-    border: 3px solid #cc33cccc;
+.box {
+    border: 3px solid #03c500cc;
     padding: 5px;
     background-color: #fff5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex * {
+    padding: 0vh 1vw;
+    flex: 1;
+}
+
+
+
+
+
+/* 研修ノート_Oracle */
+/* ##### 内部結合の出力 の変更 */
+/* 結合キーの列の色を変える */
+.custom-table td:nth-child(3),
+.custom-table td:nth-child(4),
+.custom-table th:nth-child(3),
+.custom-table th:nth-child(4) {
+    background-color: #e2efda;
+    /* 薄い緑色 */
+}
+
+/* ##### 左外部結合の出力 の変更 */
+.custom-table-v2 td:nth-child(3),
+.custom-table-v2 td:nth-child(4),
+.custom-table-v2 th:nth-child(3),
+.custom-table-v2 th:nth-child(4) {
+    background-color: #e2efda;
+}
+
+/* 8行目のテキスト色を赤に変更 */
+.custom-table-v2 tr:nth-child(8) td:nth-child(4),
+.custom-table-v2 tr:nth-child(8) td:nth-child(5) {
+    color: #ff0000;
+}
+
+/* ##### 右外部結合の出力の変更 */
+.custom-table-v3 td:nth-child(3),
+.custom-table-v3 td:nth-child(4),
+.custom-table-v3 th:nth-child(3),
+.custom-table-v3 th:nth-child(4) {
+    background-color: #e2efda;
+}
+
+/* 最終行(8行目)のテキスト色を赤に変更 */
+.custom-table-v3 tr:nth-child(8) td:nth-child(1),
+.custom-table-v3 tr:nth-child(8) td:nth-child(2),
+.custom-table-v3 tr:nth-child(8) td:nth-child(3) {
+    color: #ff0000;
 }
 </style>
         </head>
         <body class="vscode-body vscode-light">
-            <h1 id="研修ノート">研修ノート</h1>
+            <div class="content-card>
+# 研修ノート
 <h1 id="4月6日">4月6日</h1>
 <h2 id="午前">午前</h2>
 <h3 id="やったこと">やったこと</h3>
@@ -2362,7 +2439,128 @@ list.remove(<span class="hljs-number">1</span>); <span class="hljs-comment">// {
 </div>
 <h3 id="2分探索">2分探索</h3>
 <p>あらかじめ、昇順または降順に並んでいる配列でしかできない</p>
-<hr>
+</div>
+<!-- 目次を作成 -->
+<style>
+  :root {
+    --sidebar-width: 280px;
+    --accent-color: #3b82f6;
+  }
+
+  /* 1. 目次全体を囲むコンテナの配置（画面に対する絶対座標） */
+  #sidebar-container {
+    position: fixed !important; /* 画面に固定 */
+    top: 0 !important;
+    left: 0 !important;
+    width: var(--sidebar-width) !important;
+    height: 100vh !important;
+    z-index: 99999 !important; /* 最前面に配置 */
+    
+    /* 初期状態は画面の左外側に隠す */
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    background: #ffffff !important;
+    border-right: 1px solid #e2e8f0 !important;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important; /* はみ出し防止 */
+  }
+
+  /* 表示フラグ（JSで切り替え） */
+  #sidebar-container.active {
+    transform: translateX(0) !important;
+  }
+
+  /* 2. コンテナ内部のスクロールエリア */
+  nav#sidebar-content {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 2rem 1.5rem !important;
+    overflow-y: auto !important; /* 目次が長い場合にスクロール */
+    box-sizing: border-box !important;
+  }
+
+  /* 3. 開閉ボタン（絶対配置） */
+  #toggle-btn {
+    position: fixed !important;
+    left: 20px !important;
+    bottom: 20px !important;
+    width: 56px !important;
+    height: 56px !important;
+    background-color: var(--accent-color) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    z-index: 100000 !important; /* サイドバーよりさらに前面 */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+  }
+
+  /* 目次内のデザイン */
+  nav h2 { font-size: 0.8rem !important; color: #64748b !important; margin-bottom: 1.5rem !important; border: none !important; }
+  nav ul { list-style: none !important; padding: 0 !important; margin: 0 !important; }
+  nav li a { display: block; padding: 10px; text-decoration: none; color: #333; font-size: 14px; border-radius: 6px; transition: 0.2s; }
+  nav li a:hover { background-color: #f0f7ff; color: var(--accent-color); }
+</style>
+<head>
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', () => {
+      // 既存の要素があれば削除
+      const ids = ['sidebar-container', 'toggle-btn'];
+      ids.forEach(id => { const el = document.getElementById(id); if (el) el.remove(); });
+
+      // 1. コンテナとナビゲーションの作成
+      const container = document.createElement('div');
+      container.id = 'sidebar-container';
+      
+      const nav = document.createElement('nav');
+      nav.id = 'sidebar-content';
+      nav.innerHTML = '<h2>目次</h2><ul id="toc-list"></ul>';
+      
+      container.appendChild(nav);
+      document.body.appendChild(container);
+
+      // 2. ボタンの作成
+      const btn = document.createElement('button');
+      btn.id = 'toggle-btn';
+      btn.innerHTML = '☰';
+      document.body.appendChild(btn);
+
+      // 3. 目次の生成（本文の見出しをスキャン）
+      const tocList = document.getElementById('toc-list');
+      const headings = document.querySelectorAll('h1, h2, h3');
+      headings.forEach((h, i) => {
+        if (!h.id) h.id = 'idx-' + i;
+        const li = document.createElement('li');
+        if (h.tagName === 'H2') li.style.paddingLeft = '15px';
+        if (h.tagName === 'H3') li.style.paddingLeft = '30px';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        li.appendChild(a);
+        tocList.appendChild(li);
+        
+        // リンククリックで閉じる処理
+        a.addEventListener('click', () => {
+            container.classList.remove('active');
+            btn.innerHTML = '☰';
+        });
+      });
+
+      // 4. ボタンクリックでの表示切り替え
+      btn.addEventListener('click', (e) => {
+        const isOpen = container.classList.toggle('active');
+        btn.innerHTML = isOpen ? '✕' : '☰';
+      });
+    });
+  })();
+</script>
+</head>
 
             <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
             
