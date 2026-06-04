@@ -168,7 +168,7 @@ body {
     padding: 50px 40px !important;
 }
 .content-card {
-    background: #ffffff;
+    background: #ffffff88;
     padding: 3rem;
     border-radius: 12px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -182,7 +182,7 @@ body {
     }
 }
 
-p strong {
+strong {
     color: var(--accent-color);
     background: var(--accent-soft);
     padding: 0.1em 0.3em;
@@ -266,7 +266,22 @@ hr {
     padding: 0vh 1vw;
     flex: 1;
 }
+details[open] {
+    border-bottom: 10px solid #9fe30b99;
+}
+details {
+    border-radius: 8px;
+    border-right: 10px solid #9fe30b99;
+    border-left: 10px solid #9fe30b99;
+}
 
+summary {
+    background-color: #9fe30b99;
+    /* border-radius: 10px; */
+    color: black;
+    padding: 8px;
+    cursor: pointer;
+}
 
 
 
@@ -313,8 +328,64 @@ hr {
 </style>
         </head>
         <body class="vscode-body vscode-light">
-            <div class="content-card>
-# 研修ノート
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<head>
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', () => {
+      // 既存の要素があれば削除
+      const ids = ['sidebar-container', 'toggle-btn'];
+      ids.forEach(id => { const el = document.getElementById(id); if (el) el.remove(); });
+
+      // 1. コンテナとナビゲーションの作成
+      const container = document.createElement('div');
+      container.id = 'sidebar-container';
+      
+      const nav = document.createElement('nav');
+      nav.id = 'sidebar-content';
+      nav.innerHTML = '<h2>目次</h2><ul id="toc-list"></ul>';
+      
+      container.appendChild(nav);
+      document.body.appendChild(container);
+
+      // 2. ボタンの作成
+      const btn = document.createElement('button');
+      btn.id = 'toggle-btn';
+      btn.innerHTML = '☰';
+      document.body.appendChild(btn);
+
+      // 3. 目次の生成（本文の見出しをスキャン）
+      const tocList = document.getElementById('toc-list');
+      const headings = document.querySelectorAll('h1, h2, h3');
+      headings.forEach((h, i) => {
+        if (!h.id) h.id = 'idx-' + i;
+        const li = document.createElement('li');
+        if (h.tagName === 'H2') li.style.paddingLeft = '15px';
+        if (h.tagName === 'H3') li.style.paddingLeft = '30px';
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        li.appendChild(a);
+        tocList.appendChild(li);
+        
+        // リンククリックで閉じる処理
+        a.addEventListener('click', () => {
+            container.classList.remove('active');
+            btn.innerHTML = '☰';
+        });
+      });
+
+      // 4. ボタンクリックでの表示切り替え
+      btn.addEventListener('click', (e) => {
+        const isOpen = container.classList.toggle('active');
+        btn.innerHTML = isOpen ? '✕' : '☰';
+      });
+    });
+  })();
+</script>
+</head>
+<div class="content-card">
+<h1 id="研修ノート">研修ノート</h1>
 <h1 id="4月6日">4月6日</h1>
 <h2 id="午前">午前</h2>
 <h3 id="やったこと">やったこと</h3>
@@ -2506,61 +2577,6 @@ list.remove(<span class="hljs-number">1</span>); <span class="hljs-comment">// {
   nav li a { display: block; padding: 10px; text-decoration: none; color: #333; font-size: 14px; border-radius: 6px; transition: 0.2s; }
   nav li a:hover { background-color: #f0f7ff; color: var(--accent-color); }
 </style>
-<head>
-<script>
-  (function() {
-    document.addEventListener('DOMContentLoaded', () => {
-      // 既存の要素があれば削除
-      const ids = ['sidebar-container', 'toggle-btn'];
-      ids.forEach(id => { const el = document.getElementById(id); if (el) el.remove(); });
-
-      // 1. コンテナとナビゲーションの作成
-      const container = document.createElement('div');
-      container.id = 'sidebar-container';
-      
-      const nav = document.createElement('nav');
-      nav.id = 'sidebar-content';
-      nav.innerHTML = '<h2>目次</h2><ul id="toc-list"></ul>';
-      
-      container.appendChild(nav);
-      document.body.appendChild(container);
-
-      // 2. ボタンの作成
-      const btn = document.createElement('button');
-      btn.id = 'toggle-btn';
-      btn.innerHTML = '☰';
-      document.body.appendChild(btn);
-
-      // 3. 目次の生成（本文の見出しをスキャン）
-      const tocList = document.getElementById('toc-list');
-      const headings = document.querySelectorAll('h1, h2, h3');
-      headings.forEach((h, i) => {
-        if (!h.id) h.id = 'idx-' + i;
-        const li = document.createElement('li');
-        if (h.tagName === 'H2') li.style.paddingLeft = '15px';
-        if (h.tagName === 'H3') li.style.paddingLeft = '30px';
-        const a = document.createElement('a');
-        a.href = '#' + h.id;
-        a.textContent = h.textContent;
-        li.appendChild(a);
-        tocList.appendChild(li);
-        
-        // リンククリックで閉じる処理
-        a.addEventListener('click', () => {
-            container.classList.remove('active');
-            btn.innerHTML = '☰';
-        });
-      });
-
-      // 4. ボタンクリックでの表示切り替え
-      btn.addEventListener('click', (e) => {
-        const isOpen = container.classList.toggle('active');
-        btn.innerHTML = isOpen ? '✕' : '☰';
-      });
-    });
-  })();
-</script>
-</head>
 
             <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
             
