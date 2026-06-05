@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git運用の注意 & コメント規約 ガイドライン</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <header class="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-6 sm:p-8 shadow-xl text-center sm:text-left">
+            <h1 class="text-3xl font-black tracking-tight text-white mb-2">Git運用の注意</h1>
+            <p class="text-indigo-100 text-sm sm:text-base">チーム開発を円滑に進めるための絶対ルールとガイドライン</p>
+        </header>
+
+        <section class="bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-700 space-y-6">
+            <h2 class="text-xl font-bold text-blue-400 border-b border-slate-700 pb-3 flex items-center gap-2">
+                <span>📌 開発の鉄則ルール</span>
+            </h2>
+
+            <div class="grid grid-cols-1 gap-6">
+                <div class="bg-slate-800/50 p-4 rounded-xl border-l-4 border-amber-500 bg-amber-500/5">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">1. 「作業前に必ずPull」をチームの絶対ルールにする</h3>
+                    <p class="text-sm text-slate-300 mb-3">他の人がコミットをプッシュしているのに、自分が古い状態のままコードを書いてプッシュしようとするとエラー（Non-fast-forward）になります。</p>
+                    <div class="bg-slate-900/60 p-3 rounded-lg text-sm text-amber-200">
+                        <span class="font-bold text-amber-400">【対策】</span> PCに向かってコードを書く前、席を外して戻ってきた時など、「何かする前はまず git pull」を合言葉にしてください。つねに最新のコードをベースに作業を始めるのが鉄則です。
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-4 rounded-xl border-l-4 border-blue-500 bg-blue-500/5">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">2. コミットとプッシュは「小さく、細かく」</h3>
+                    <p class="text-sm text-slate-300 mb-3">「機能が全部完成するまでプッシュしない」のは絶対にNGです。何日分もの変更をまとめてプッシュしようとすると、ほぼ確実に巨大なコンフリクトが発生し、修正に何時間も溶かすことになります。</p>
+                    <div class="bg-slate-900/60 p-3 rounded-lg text-sm text-blue-200">
+                        <span class="font-bold text-blue-400">【対策】</span> 「関数を1つ作った」「画面のボタンを配置した」など、30分〜1時間単位の小さな単位でコミット・プッシュしましょう。他のメンバーにも自分の変更がすぐ伝わるため、衝突を最小限に抑えられます。
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-4 rounded-xl border-l-4 border-rose-500 bg-rose-500/5">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">3. 「壊れたコード」は絶対にプッシュしない</h3>
+                    <p class="text-sm text-slate-300 mb-3">mainブランチしかないので、あなたがプッシュしたコードは一瞬でチーム全員のパソコンに同期されます。もし動かないコード（エラーが出る、ビルドが通らないコード）をプッシュしてしまうと、チーム全員の開発がストップしてしまいます。</p>
+                    <div class="bg-slate-900/60 p-3 rounded-lg text-sm text-rose-200">
+                        <span class="font-bold text-rose-400">【対策】</span> プッシュする前に、必ず自分の手元で「正常に動作するか」「エラーが出ていないか」を確認（ローカルテスト）してください。未完成のコードをどうしても共有したい場合は、コメントアウトするか、処理を通らないように工夫しましょう。
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-4 rounded-xl border-l-4 border-emerald-500 bg-emerald-500/5">
+                    <h3 class="text-lg font-bold text-slate-100 mb-2">4. 担当範囲（触るファイル）を明確に分ける</h3>
+                    <p class="text-sm text-slate-300 mb-3">同じファイルの同じ行を複数人で同時に編集すると、100%コンフリクトします。</p>
+                    <div class="bg-slate-900/60 p-3 rounded-lg text-sm text-emerald-200 space-y-2">
+                        <div><span class="font-bold text-emerald-400">【対策】</span> 毎朝のミーティングなどで、「誰がどのファイルを触るか」の縄張りをしっかり決めておくと安全です。</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-700/50 text-slate-300 font-mono text-xs">
+                            <div class="bg-slate-950 p-2 rounded">Aさん：トップ画面のHTML/CSS</div>
+                            <div class="bg-slate-950 p-2 rounded">Bさん：ユーザー登録の裏側処理（API）</div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">このようにファイル自体が分かれていれば、同じmainブランチにどんどんプッシュしてもコンフリクトは起きません。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-red-950/40 border border-red-800 rounded-xl p-4 mt-6">
+                <h3 class="text-base font-bold text-red-400 mb-2 flex items-center gap-2">
+                    <span>🛠️ 万が一、コンフリクト（衝突）が起きたら？</span>
+                </h3>
+                <p class="text-sm text-slate-300 mb-3">気をつけていてもコンフリクトは起きます。その時の心構えです。</p>
+                <p class="text-base font-black text-red-300 bg-red-950 px-3 py-2 rounded border border-red-900 mb-3 inline-block">
+                    「絶対に1人で勝手に直さないこと！」
+                </p>
+                <p class="text-sm text-slate-300">Gitが「どっちのコードを残せばいいか分からない！」と言っている状態なので、勝手に判断して相手のコードを消してしまうとトラブルになります。必ず衝突した相手と一緒に画面を見ながら「どっちのコードを残すか（あるいは混ぜるか）」を話し合って修正してください。</p>
+            </div>
+
+            <div class="bg-indigo-950/40 border border-indigo-800 rounded-xl p-4">
+                <h3 class="text-base font-bold text-indigo-400 mb-2 flex items-center gap-2">
+                    <span>💡 チームを救う「コミュニケーション」のコツ</span>
+                </h3>
+                <p class="text-sm text-slate-300 mb-3">テクニカルなこと以上に大事なのが、チーム内での声かけです。</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-indigo-200 mb-3">
+                    <div class="bg-indigo-950 p-2 rounded border border-indigo-900/50">「今から〇〇のファイルを修正してプッシュするよ！」</div>
+                    <div class="bg-indigo-950 p-2 rounded border border-indigo-900/50">「大きな変更プッシュしたから、みんな一回 pull して！」</div>
+                </div>
+                <p class="text-sm text-slate-300">チャットツールや口頭で、これらを一言かけ合うだけで、Gitのトラブルは8割減らせます。</p>
+            </div>
+        </section>
+
+        <section class="bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-700 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-700 pb-3">
+                <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2">
+                    <span># コメントの形式</span>
+                </h2>
+                <span class="text-xs bg-slate-700 text-slate-300 px-2 py-1 rounded">できれば半角で入力</span>
+            </div>
+            
+            <p class="text-sm text-slate-300">Gitコメントは以下のようなプレフィクスをつけるのが一般的です。以下を参考にコメント品質を保つようにして下さい。</p>
+
+            <div class="flex items-center bg-slate-900 rounded-lg px-3 py-2 border border-slate-700">
+                <input type="text" id="prefixSearch" placeholder="プレフィクスやキーワードで検索..." class="bg-transparent w-full text-sm text-slate-100 placeholder-slate-500 focus:outline-none">
+            </div>
+
+            <div id="prefixContainer" class="grid grid-cols-1 gap-4">
+                
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="add 追加 ログイン画面 日付計算用ライブラリ">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-900">add</span>
+                        <span class="text-xs text-slate-400">意味: 新しいファイル、機能、ライブラリなどを追加した場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">add: ログイン画面のファイルを追加</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">add: 日付計算用のライブラリを追加</div>
+                    </div>
+                </div>
+
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="update 更新 変更 パスワード 文字数制限 README 環境構築手順最新化">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-mono font-bold text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-900">update</span>
+                        <span class="text-xs text-slate-400">意味: 既存の機能、仕様、設定などを変更・更新した場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">update: パスワードの文字数制限を8文字から12文字に変更</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">update: READMEの環境構築手順を最新化</div>
+                    </div>
+                </div>
+
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="delete del remove 削除 古いアイコン画像 デバッグ用 コンソール出力">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <div class="flex gap-1.5 font-mono font-bold text-rose-400 text-sm">
+                            <span class="bg-rose-950/60 px-2 py-0.5 rounded border border-rose-900">delete</span>
+                            <span class="bg-rose-950/60 px-2 py-0.5 rounded border border-rose-900">del</span>
+                            <span class="bg-rose-950/60 px-2 py-0.5 rounded border border-rose-900">remove</span>
+                        </div>
+                        <span class="text-xs text-slate-400">意味: 不要になったファイル、機能、コードを削除した場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">del: 使われていない古いアイコン画像を削除</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">remove: デバッグ用の不要なコンソール出力を削除</div>
+                    </div>
+                </div>
+
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="fix 修正 バグ エラー スマホ 文字見切れる 不具合 存在しないページ アクセス">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-mono font-bold text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-900">fix</span>
+                        <span class="text-xs text-slate-400">意味: バグやエラー、意図しない挙動を直した場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">fix: スマホで見たときに文字が見切れる不具合を修正</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">fix: 存在しないページにアクセスするとエラーになる問題を修正</div>
+                    </div>
+                </div>
+
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="clean 整理 リファクタリング フォーマット 関数分割 インデント 改行">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-mono font-bold text-purple-400 bg-purple-950/60 px-2 py-0.5 rounded border border-purple-900">clean</span>
+                        <span class="text-xs text-slate-400">意味: コードの動作は変えずに、見やすく整理（リファクタリングやフォーマット）した場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">clean: 処理が長かったため、関数を分割して整理</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">clean: ソースコード内のインデントと改行を整える</div>
+                    </div>
+                </div>
+
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="rename 名前変更 ファイル名 変数名 関数名 ユーザー画像フォルダ img images">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-mono font-bold text-fuchsia-400 bg-fuchsia-950/60 px-2 py-0.5 rounded border border-fuchsia-900">rename</span>
+                        <span class="text-xs text-slate-400">意味: ファイル名や、変数名・関数名などを変更した場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">rename: ユーザー画像フォルダの名前を img から images に変更</div>
+                    </div>
+                </div>
+
+                <div class="prefix-card bg-slate-900/50 p-4 rounded-xl border border-slate-700/60" data-tags="move 移動 共通設定ファイル configフォルダ配下">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-lg font-mono font-bold text-teal-400 bg-teal-950/60 px-2 py-0.5 rounded border border-teal-900">move</span>
+                        <span class="text-xs text-slate-400">意味: ファイルやフォルダの場所を移動させた場合。</span>
+                    </div>
+                    <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                        <div class="text-xs text-slate-400 font-bold">【例】</div>
+                        <div class="text-sm font-mono bg-slate-950 p-2 rounded text-slate-300 select-all cursor-pointer hover:bg-slate-900" title="クリックで全選択">move: 共通設定ファイルを config フォルダ配下に移動</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-slate-800 rounded-2xl p-6 sm:p-8 shadow-lg border border-slate-700 space-y-4">
+            <h2 class="text-xl font-bold text-orange-400 border-b border-slate-700 pb-3 flex items-center gap-2">
+                <span># 除外ファイルの設定</span>
+            </h2>
+            <div class="p-4 bg-slate-900 rounded-xl space-y-3 border border-slate-700/50">
+                <p class="text-sm text-slate-300 leading-relaxed">
+                    <code class="bg-slate-800 text-orange-300 px-1.5 py-0.5 rounded font-mono border border-slate-700">application.properties</code> はDBの環境で修正が必要になります。
+                </p>
+                <div class="flex items-center gap-2 text-sm bg-orange-950/40 border border-orange-900 text-orange-200 p-3 rounded-lg font-medium">
+                    <span>👉 自分のDBに合わせた変更を行った後、<strong class="bg-slate-900 px-1.5 py-0.5 rounded text-white mx-1 font-mono">チーム ＞＞ 無視</strong> を選択して下さい。</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.getElementById('prefixSearch').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.prefix-card');
+            
+            cards.forEach(card => {
+                const tags = card.getAttribute('data-tags').toLowerCase();
+                if (tags.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
