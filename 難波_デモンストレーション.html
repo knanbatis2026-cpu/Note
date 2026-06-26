@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x30c7;&#x30e2;&#x30f3;&#x30b9;&#x30c8;&#x30ec;&#x30fc;&#x30b7;&#x30e7;&#x30f3;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        <style>
+:root {
+    --bg-color: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --accent-color: #3b82f6;
+    --accent-soft: #eff6ff;
+    --border-color: #e2e8f0;
+    --code-bg: #1e1e1e;
+    --header-height: 60px;
+}
+
+/* 手書きノート風スタイル */
+body {
+    font-family: 'MeiryoUI' !important;
+    background-color: #fffaf0 !important;
+    /* ノート用紙の背景色 */
+    background-image:
+        linear-gradient(#f1e1d1 1px, transparent 1px),
+        linear-gradient(90deg, #f1e1d1 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* 方眼紙風 */
+    color: #4a4a4a !important;
+    line-height: 1.8 !important;
+}
+
+/* 基本設定：小さいウィンドウ（フルスクリーン以外） */
+body {
+    padding: 50px 40px !important;
+}
+.content-card {
+    background: #ffffff88;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* 画面幅が広い場合（例：1024px以上をフルスクリーンとみなす場合） */
+@media screen and (min-width: 1024px) {
+    body {
+        padding: 50px 200px !important;
+    }
+}
+
+strong {
+    color: var(--accent-color);
+    background: var(--accent-soft);
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #2d5a88 !important;
+    border-bottom: 2px dashed #d1b8a1 !important;
+    padding-bottom: 5px !important;
+    font-weight: bold !important;
+}
+
+ul {
+    list-style-type: square !important;
+}
+
+code {
+    background-color: #fcebeb !important;
+    color: #d1242f !important;
+    padding: 2px 4px !important;
+    border-radius: 4px !important;
+    font-family: 'Courier New', Courier, 'Firple', monospace !important;
+    width: calc(100% - 8px) !important;
+}
+
+pre {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hljs-title.function_ {
+    color: orange !important;
+}
+
+.hljs-title {
+    color: #000000 !important;
+}
+
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+}
+
+th,
+td {
+    border: 1px solid #d1b8a1 !important;
+    padding: 8px !important;
+}
+
+th {
+    background-color: #fdf5e6 !important;
+}
+
+hr {
+    border: 0 !important;
+    border-top: 2px solid #d1b8a1 !important;
+    margin: 30px 0 !important;
+}
+
+.box {
+    border: 3px solid #03c500cc;
+    padding: 5px;
+    background-color: #fff5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex * {
+    padding: 0vh 1vw;
+    flex: 1;
+}
+details[open] {
+    border-bottom: 10px solid #9fe30b99;
+}
+details {
+    border-radius: 8px;
+    border-right: 10px solid #9fe30b99;
+    border-left: 10px solid #9fe30b99;
+}
+
+summary {
+    background-color: #9fe30b99;
+    /* border-radius: 10px; */
+    color: black;
+    padding: 8px;
+    cursor: pointer;
+}
+.table_list th{
+    display: none;
+}
+
+
+
+/* 研修ノート_Oracle */
+/* ##### 内部結合の出力 の変更 */
+/* 結合キーの列の色を変える */
+.custom-table td:nth-child(3),
+.custom-table td:nth-child(4),
+.custom-table th:nth-child(3),
+.custom-table th:nth-child(4) {
+    background-color: #e2efda;
+    /* 薄い緑色 */
+}
+
+/* ##### 左外部結合の出力 の変更 */
+.custom-table-v2 td:nth-child(3),
+.custom-table-v2 td:nth-child(4),
+.custom-table-v2 th:nth-child(3),
+.custom-table-v2 th:nth-child(4) {
+    background-color: #e2efda;
+}
+
+/* 8行目のテキスト色を赤に変更 */
+.custom-table-v2 tr:nth-child(8) td:nth-child(4),
+.custom-table-v2 tr:nth-child(8) td:nth-child(5) {
+    color: #ff0000;
+}
+
+/* ##### 右外部結合の出力の変更 */
+.custom-table-v3 td:nth-child(3),
+.custom-table-v3 td:nth-child(4),
+.custom-table-v3 th:nth-child(3),
+.custom-table-v3 th:nth-child(4) {
+    background-color: #e2efda;
+}
+
+/* 最終行(8行目)のテキスト色を赤に変更 */
+.custom-table-v3 tr:nth-child(8) td:nth-child(1),
+.custom-table-v3 tr:nth-child(8) td:nth-child(2),
+.custom-table-v3 tr:nth-child(8) td:nth-child(3) {
+    color: #ff0000;
+}
+</style>
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<div class="content-card">
+<h1 id="デモンストレーション">デモンストレーション</h1>
+<h2 id="商品詳細ページから">――商品詳細ページから</h2>
+<p>では、続いて私からポイント機能についてご紹介させていただきます。</p>
+<p>ポイントは、商品を購入したときに、獲得することが出来ます。</p>
+<p><code>※ 注文チェック画面までいく</code></p>
+<p>この画面で、溜まったポイントを使うことが出来ます。<br>
+1ポイント1円として、利用できます。</p>
+<p><code>※ ポイントを設定</code></p>
+<p>支払金額の10%をポイントとして獲得できます。</p>
+<h2 id="画面上部のテーマから">――画面上部のテーマから</h2>
+<p>次に着せ替え機能についてお話させていただきます。</p>
+<p>画面上部、ヘッダーにありますテーマリンクをクリックします。</p>
+<p><code>※ テーマをクリック</code></p>
+<p>このページでは、テーマ覧として着せ替えができる機能が表示されます。</p>
+<p><strong>実際に押してみますとこのように背景などを変えることができます。</strong></p>
+<p><code>※ 実際に押してテーマを変える。明るいテーマに変更</code></p>
+<p><strong>そして未解放のテーマは、注文回数や累計注文金額をもとに、少しずつ解放されていきます。</strong></p>
+<p>実際に購入してみます。</p>
+<p><code>※解放されていないテーマを開けるために購入する、テーマを解放</code></p>
+<p>するとこのようにテーマが開放され、変更できるようになります。</p>
+<p>このように、ゲームの要素を取り入れた、いわゆる「<strong>ゲーミフィケーション</strong>」というアプローチで、継続利用への動機づけを行っております。</p>
+<h2 id="サイドにあるスマート購入プランナーをクリック">――サイドにあるスマート購入プランナーをクリック</h2>
+<p>また、ほかにも、左側のサイドバーにあります<strong>スマート購入プランナー</strong>のほう押していただくと、用途と予算を入れることにより、それに合ったプランの商品をも提案してくれます。</p>
+<p>実際に動かしていきます。</p>
+<p>「プログラミングを学びたい」予算「14万」と入力すると、</p>
+<pre><code> ※以下を打ち込む
+用途「プログラミングを学びたい」予算「14万」
+</code></pre>
+<p>このように、予算以内でブランを組んでもらえます。</p>
+<p>ここでは、コスパ重視、ハイエンドといった風なプランを提供してくれます。</p>
+<p><strong>合計金額や残予算なども出るようにし、予算に対していくら必要なのかをわかるようにしました。</strong></p>
+<p>他にも</p>
+<pre><code>※以下を打ち込む
+用途「ゲームがしたい」予算「20万」
+</code></pre>
+<p>と打ち込むとこのような表示になります。</p>
+<h2 id="最近チェックした商品を紹介">――最近チェックした商品を紹介</h2>
+<p>次にご紹介するのが、スマート購入プランナーの上にある最近チェックした商品という機能です。</p>
+<p><strong>こちらは、閲覧履歴から最新の商品を表示し、再訪問しやすくなるような機能です。</strong></p>
+<p>こちらに履歴として残るのは5つまでで、それ以降は1番古いものが順次消えていく設定となっております。</p>
+<p><code>※何度か商品をクリックし、古いものが消えていくところを見せる</code></p>
+<h2 id="アカウントロック機能ログイン画面から">――アカウントロック機能、ログイン画面から</h2>
+<p>最後にセキュリティ面についてご紹介させていただきます。</p>
+<p>ログインページの方に飛んでいただいて、誤ったパスワードを5回踏みますとアカウントが15分間ロックされてしまうという機能を追加しました。</p>
+<p><code>※ログイン画面から5回間違える動作を行う</code></p>
+<p>また、管理者と購入者の役割を明確に分けることで、管理者画面へのアクセスを制御する権限分離機能も追加しました。</p>
+<h2 id="終わりトップ画面へ">――終わり。トップ画面へ</h2>
+<p>以上が主な独自機能の紹介になります。</p>
+<p><strong>今回のECサイトでは、若年層が「楽しく・便利に」利用できるというコンセプトのもと</strong>、購入体験にゲーム性や利便性を組み合わせた設計を行いました。</p>
+<p>まだ改善できる点もありますが、<strong>基本機能に加えて、付加価値のある機能を実装することで、より継続的に使いたくなるサイト</strong>を目指しました。</p>
+<p>以上でBチーム3班P3techの紹介を終わります。</p>
+<p>ここからは、質疑応答の時間に移らせていただきます。質問のある方はどうぞよろしくお願いいたします。</p>
+</div>
+            
+            
+        </body>
+        </html>
